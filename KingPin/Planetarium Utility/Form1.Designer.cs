@@ -1,4 +1,4 @@
-﻿namespace Planetarium_Utilities
+﻿namespace Planetarium_Utility
 {
     partial class Form1
     {

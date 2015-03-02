@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planetarium Utility", "Planetarium Utility\Planetarium Utility.csproj", "{96551426-400E-4273-9A46-1505404B863A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96551426-400E-4273-9A46-1505404B863A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96551426-400E-4273-9A46-1505404B863A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96551426-400E-4273-9A46-1505404B863A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96551426-400E-4273-9A46-1505404B863A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
