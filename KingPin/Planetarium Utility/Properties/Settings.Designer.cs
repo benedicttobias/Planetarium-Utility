@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Planetarium_Utilities.Properties
+namespace Planetarium_Utility.Properties
 {
 
 
