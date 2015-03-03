@@ -44,5 +44,15 @@ namespace Planetarium_Utility
                 Environment.Exit(1);
             }
         }
+
+        private void destinationLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
