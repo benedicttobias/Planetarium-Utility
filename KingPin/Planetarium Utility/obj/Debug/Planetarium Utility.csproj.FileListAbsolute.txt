@@ -1,1 +1,9 @@
 D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\bin\Debug\Planetarium Utility.exe.config
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\bin\Debug\Planetarium Utility.exe
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\bin\Debug\Planetarium Utility.pdb
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.csprojResolveAssemblyReference.cache
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.Main.resources
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.Properties.Resources.resources
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.csproj.GenerateResource.Cache
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.exe
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.pdb
