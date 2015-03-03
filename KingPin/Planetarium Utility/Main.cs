@@ -54,5 +54,10 @@ namespace Planetarium_Utility
         {
 
         }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
