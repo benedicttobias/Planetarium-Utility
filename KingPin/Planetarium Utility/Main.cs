@@ -22,9 +22,48 @@ namespace Planetarium_Utility
 
             // Initialize option user control
             options = new OptionsMenu();
+
+            // Initialize Form size
+            this.Height = 328;
+            this.Width  = 504;
+            
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void logButton_Click(object sender, EventArgs e)
+        {
+            int heightCollapsed = 328;
+            int heightExpanded  = 456;
+
+            // Show log list view
+            if (this.Height == heightCollapsed)
+            {
+                // Loop until height is big enough to show Log list view
+                while (this.Height != heightExpanded)                
+                {
+                    this.Height += 1;
+
+                     Application.DoEvents();
+                }
+
+                // Show log list view
+                logListView.Visible = true;
+            }
+            else
+            {
+                // Hide log list view
+                logListView.Visible = false;                
+
+                // Loop until height is small enough to hide Log list view
+                while (this.Height != heightCollapsed)
+                {
+                    this.Height -= 1;
+
+                    Application.DoEvents();
+                }
+            }
+        }
+
+        private void optionsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             // Show the options menu
             options.Show();
@@ -43,21 +82,6 @@ namespace Planetarium_Utility
                 // Exit appropriately
                 Environment.Exit(1);
             }
-        }
-
-        private void destinationLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void resetButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

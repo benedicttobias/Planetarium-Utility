@@ -46,10 +46,11 @@
             this.filesListView = new System.Windows.Forms.ListView();
             this.resetButton = new System.Windows.Forms.Button();
             this.distributeButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.logButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.copyProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusUpdateStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.logListView = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.pathGroupBox.SuspendLayout();
             this.filesGroupBox.SuspendLayout();
@@ -82,6 +83,7 @@
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click_1);
             // 
             // exitToolStripMenuItem
             // 
@@ -93,6 +95,7 @@
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -209,21 +212,22 @@
             this.distributeButton.Text = "Distribute";
             this.distributeButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // logButton
             // 
-            this.button3.Location = new System.Drawing.Point(438, 231);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(44, 32);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Log";
-            this.button3.UseVisualStyleBackColor = true;
+            this.logButton.Location = new System.Drawing.Point(438, 231);
+            this.logButton.Name = "logButton";
+            this.logButton.Size = new System.Drawing.Size(44, 32);
+            this.logButton.TabIndex = 17;
+            this.logButton.Text = "Log";
+            this.logButton.UseVisualStyleBackColor = true;
+            this.logButton.Click += new System.EventHandler(this.logButton_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyProgressBar,
             this.statusUpdateStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 391);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 396);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(492, 22);
             this.statusStrip1.TabIndex = 18;
@@ -231,25 +235,37 @@
             // 
             // copyProgressBar
             // 
+            this.copyProgressBar.Margin = new System.Windows.Forms.Padding(12, 3, 1, 3);
             this.copyProgressBar.Name = "copyProgressBar";
             this.copyProgressBar.Size = new System.Drawing.Size(100, 16);
             // 
             // statusUpdateStatusLabel
             // 
+            this.statusUpdateStatusLabel.Margin = new System.Windows.Forms.Padding(5, 3, 0, 2);
             this.statusUpdateStatusLabel.Name = "statusUpdateStatusLabel";
             this.statusUpdateStatusLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.statusUpdateStatusLabel.Size = new System.Drawing.Size(113, 17);
             this.statusUpdateStatusLabel.Text = "Please select Project";
             // 
+            // logListView
+            // 
+            this.logListView.Location = new System.Drawing.Point(12, 271);
+            this.logListView.Name = "logListView";
+            this.logListView.Size = new System.Drawing.Size(470, 117);
+            this.logListView.TabIndex = 19;
+            this.logListView.UseCompatibleStateImageBehavior = false;
+            this.logListView.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 413);
+            this.ClientSize = new System.Drawing.Size(492, 418);
+            this.Controls.Add(this.logListView);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.distributeButton);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.logButton);
             this.Controls.Add(this.filesGroupBox);
             this.Controls.Add(this.pathGroupBox);
             this.Controls.Add(this.menuStrip1);
@@ -289,10 +305,11 @@
         private System.Windows.Forms.ListView filesListView;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button distributeButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button logButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar copyProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusUpdateStatusLabel;
+        private System.Windows.Forms.ListView logListView;
 
     }
 }
