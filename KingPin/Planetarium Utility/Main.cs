@@ -13,7 +13,7 @@ namespace Planetarium_Utility
     public partial class Main : Form
     {
         // Housekeeping section  
-        OptionsMenu options;
+        settingWindow options;
 
         public Main()
         {
@@ -21,17 +21,20 @@ namespace Planetarium_Utility
             InitializeComponent();
 
             // Initialize option user control
-            options = new OptionsMenu();
+            options = new settingWindow();
 
             // Initialize Form size
             this.Height = 360;
             this.Width  = 512;
-            
+           
         }
 
         private void optionsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // Show the options menu
+            // Show the options menu or create one if its not exist
+            if (options == null || options.IsDisposed == true)
+                options = new settingWindow();
+
             options.Show();
         }
 
@@ -81,6 +84,11 @@ namespace Planetarium_Utility
                     Application.DoEvents();
                 }
             }
+        }
+
+        private void distributeButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
