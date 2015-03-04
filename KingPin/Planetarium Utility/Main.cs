@@ -13,7 +13,7 @@ namespace Planetarium_Utility
     public partial class Main : Form
     {
         // Housekeeping section  
-        OptionsMenu options;
+        settingWindow options;
 
         public Main()
         {
@@ -21,7 +21,7 @@ namespace Planetarium_Utility
             InitializeComponent();
 
             // Initialize option user control
-            options = new OptionsMenu();
+            options = new settingWindow();
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
