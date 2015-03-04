@@ -24,43 +24,9 @@ namespace Planetarium_Utility
             options = new OptionsMenu();
 
             // Initialize Form size
-            this.Height = 328;
-            this.Width  = 504;
+            this.Height = 360;
+            this.Width  = 512;
             
-        }
-
-        private void logButton_Click(object sender, EventArgs e)
-        {
-            int heightCollapsed = 328;
-            int heightExpanded  = 456;
-
-            // Show log list view
-            if (this.Height == heightCollapsed)
-            {
-                // Loop until height is big enough to show Log list view
-                while (this.Height != heightExpanded)                
-                {
-                    this.Height += 1;
-
-                     Application.DoEvents();
-                }
-
-                // Show log list view
-                logListView.Visible = true;
-            }
-            else
-            {
-                // Hide log list view
-                logListView.Visible = false;                
-
-                // Loop until height is small enough to hide Log list view
-                while (this.Height != heightCollapsed)
-                {
-                    this.Height -= 1;
-
-                    Application.DoEvents();
-                }
-            }
         }
 
         private void optionsToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -71,16 +37,49 @@ namespace Planetarium_Utility
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Check if any error loop
+            // Force the program if there is a message loop otherwise exit appropriately
             if (Application.MessageLoop)
-            {
-                // Force exit
                 Application.Exit();
+            else
+                Environment.Exit(1);
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logButton_Click_1(object sender, EventArgs e)
+        {
+            int heightCollapsed = 360;
+            int heightExpanded = 486;
+
+            // Show log list view
+            if (this.Height == heightCollapsed)
+            {
+                // Loop until height is big enough to show Log list view
+                while (this.Height < heightExpanded )
+                {
+                    this.Height           += 1;
+                    mainTabControl.Height += 1;
+                    Application.DoEvents();
+                }
+
+                // Show log list view
+                logListView.Visible = true;
             }
             else
             {
-                // Exit appropriately
-                Environment.Exit(1);
+                // Hide log list view
+                logListView.Visible = false;
+
+                // Loop until height is small enough to hide Log list view
+                while (this.Height > heightCollapsed)
+                {
+                    this.Height           -= 1;
+                    mainTabControl.Height -= 1;
+                    Application.DoEvents();
+                }
             }
         }
     }
