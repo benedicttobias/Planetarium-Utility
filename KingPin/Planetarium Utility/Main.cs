@@ -54,19 +54,19 @@ namespace Planetarium_Utility
 
         private void logButton_Click_1(object sender, EventArgs e)
         {
-            int heightCollapsed = 360;
-            int heightExpanded = 486;
+            int formHeightCollapsed       = 360;
+            int formHeightExpanded        = 475;
+            int tabControlHeightCollapsed = 272;
+            int tabControlHeightExpanded  = 393;
 
-            // Show log list view
-            if (this.Height == heightCollapsed)
+            // Expand the form and tab control, otherwise collaps them
+            if (this.Height == formHeightCollapsed)
             {
-                // Loop until height is big enough to show Log list view
-                while (this.Height < heightExpanded )
-                {
-                    this.Height           += 1;
-                    mainTabControl.Height += 1;
-                    Application.DoEvents();
-                }
+                // Loop until form height is big enough to show Log list view
+                while (this.Height != formHeightExpanded )
+                    this.Height += 1;
+
+                mainTabControl.Height = tabControlHeightExpanded;
 
                 // Show log list view
                 logListView.Visible = true;
@@ -76,13 +76,12 @@ namespace Planetarium_Utility
                 // Hide log list view
                 logListView.Visible = false;
 
-                // Loop until height is small enough to hide Log list view
-                while (this.Height > heightCollapsed)
-                {
+                // Loop until form height is small enough to hide Log list view
+                while (this.Height != formHeightCollapsed)
                     this.Height           -= 1;
-                    mainTabControl.Height -= 1;
-                    Application.DoEvents();
-                }
+
+                mainTabControl.Height = tabControlHeightCollapsed;
+
             }
         }
 
