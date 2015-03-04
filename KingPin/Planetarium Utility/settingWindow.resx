@@ -117,177 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;rendererNum.Name" xml:space="preserve">
-    <value>rendererNum</value>
-  </data>
-  <data name="&gt;&gt;rendererNum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rendererNum.Parent" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;rendererNum.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;rendererName.Name" xml:space="preserve">
-    <value>rendererName</value>
-  </data>
-  <data name="&gt;&gt;rendererName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rendererName.Parent" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;rendererName.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.Name" xml:space="preserve">
-    <value>rendererNumberLabel</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.Parent" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.Name" xml:space="preserve">
-    <value>rendererNameLabel</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.Parent" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="renderersBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 13</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="renderersBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="renderersBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 100</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="renderersBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="renderersBox.Text" xml:space="preserve">
-    <value>Renderers</value>
-  </data>
-  <data name="&gt;&gt;renderersBox.Name" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;renderersBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;renderersBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;renderersBox.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="rendererName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 24</value>
-  </data>
-  <data name="rendererName.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="rendererName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 25</value>
-  </data>
-  <data name="rendererName.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="rendererName.Text" xml:space="preserve">
-    <value>DS</value>
-  </data>
-  <data name="rendererName.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;rendererName.Name" xml:space="preserve">
-    <value>rendererName</value>
-  </data>
-  <data name="&gt;&gt;rendererName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rendererName.Parent" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;rendererName.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="rendererNumberLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rendererNumberLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 65</value>
-  </data>
-  <data name="rendererNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
-  </data>
-  <data name="rendererNumberLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="rendererNumberLabel.Text" xml:space="preserve">
-    <value>Nu&amp;mber</value>
-  </data>
-  <data name="rendererNumberLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.Name" xml:space="preserve">
-    <value>rendererNumberLabel</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.Parent" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;rendererNumberLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="rendererNameLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rendererNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rendererNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="rendererNameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 17</value>
-  </data>
-  <data name="rendererNameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="rendererNameLabel.Text" xml:space="preserve">
-    <value>&amp;Name</value>
-  </data>
-  <data name="rendererNameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.Name" xml:space="preserve">
-    <value>rendererNameLabel</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.Parent" xml:space="preserve">
-    <value>renderersBox</value>
-  </data>
-  <data name="&gt;&gt;rendererNameLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="rendererNum.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -321,14 +151,16 @@
   <data name="rendererNum.Items9" xml:space="preserve">
     <value>10</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="rendererNum.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 62</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="rendererNum.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="rendererNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 25</value>
+    <value>154, 24</value>
   </data>
   <data name="rendererNum.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -345,6 +177,147 @@
   <data name="&gt;&gt;rendererNum.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="rendererName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 24</value>
+  </data>
+  <data name="rendererName.MaxLength" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="rendererName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 22</value>
+  </data>
+  <data name="rendererName.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rendererName.Text" xml:space="preserve">
+    <value>DS</value>
+  </data>
+  <data name="rendererName.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;rendererName.Name" xml:space="preserve">
+    <value>rendererName</value>
+  </data>
+  <data name="&gt;&gt;rendererName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rendererName.Parent" xml:space="preserve">
+    <value>renderersBox</value>
+  </data>
+  <data name="&gt;&gt;rendererName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rendererNumberLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rendererNumberLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 65</value>
+  </data>
+  <data name="rendererNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 16</value>
+  </data>
+  <data name="rendererNumberLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="rendererNumberLabel.Text" xml:space="preserve">
+    <value>Nu&amp;mber</value>
+  </data>
+  <data name="rendererNumberLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;rendererNumberLabel.Name" xml:space="preserve">
+    <value>rendererNumberLabel</value>
+  </data>
+  <data name="&gt;&gt;rendererNumberLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rendererNumberLabel.Parent" xml:space="preserve">
+    <value>renderersBox</value>
+  </data>
+  <data name="&gt;&gt;rendererNumberLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="rendererNameLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rendererNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rendererNameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="rendererNameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 16</value>
+  </data>
+  <data name="rendererNameLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="rendererNameLabel.Text" xml:space="preserve">
+    <value>&amp;Name</value>
+  </data>
+  <data name="rendererNameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;rendererNameLabel.Name" xml:space="preserve">
+    <value>rendererNameLabel</value>
+  </data>
+  <data name="&gt;&gt;rendererNameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rendererNameLabel.Parent" xml:space="preserve">
+    <value>renderersBox</value>
+  </data>
+  <data name="&gt;&gt;rendererNameLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="renderersBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 13</value>
+  </data>
+  <data name="renderersBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="renderersBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 100</value>
+  </data>
+  <data name="renderersBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="renderersBox.Text" xml:space="preserve">
+    <value>Renderers</value>
+  </data>
+  <data name="&gt;&gt;renderersBox.Name" xml:space="preserve">
+    <value>renderersBox</value>
+  </data>
+  <data name="&gt;&gt;renderersBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;renderersBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;renderersBox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="password.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 62</value>
+  </data>
+  <data name="password.MaxLength" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="password.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="password.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="password.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="password.Text" xml:space="preserve">
+    <value>sky</value>
+  </data>
+  <data name="password.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;password.Name" xml:space="preserve">
     <value>password</value>
   </data>
@@ -356,6 +329,24 @@
   </data>
   <data name="&gt;&gt;password.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="username.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 24</value>
+  </data>
+  <data name="username.MaxLength" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="username.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="username.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="username.Text" xml:space="preserve">
+    <value>skyvision</value>
+  </data>
+  <data name="username.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;username.Name" xml:space="preserve">
     <value>username</value>
@@ -369,6 +360,27 @@
   <data name="&gt;&gt;username.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="passwordLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="passwordLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="passwordLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 65</value>
+  </data>
+  <data name="passwordLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 16</value>
+  </data>
+  <data name="passwordLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="passwordLabel.Text" xml:space="preserve">
+    <value>&amp;Password</value>
+  </data>
+  <data name="passwordLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="&gt;&gt;passwordLabel.Name" xml:space="preserve">
     <value>passwordLabel</value>
   </data>
@@ -380,6 +392,27 @@
   </data>
   <data name="&gt;&gt;passwordLabel.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="usernameLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="usernameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="usernameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="usernameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 16</value>
+  </data>
+  <data name="usernameLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="usernameLabel.Text" xml:space="preserve">
+    <value>&amp;Username</value>
+  </data>
+  <data name="usernameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;usernameLabel.Name" xml:space="preserve">
     <value>usernameLabel</value>
@@ -420,134 +453,23 @@
   <data name="&gt;&gt;authBox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="username.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 24</value>
+  <data name="defFileTypes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 103</value>
   </data>
-  <data name="username.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
+  <data name="defFileTypes.MaxLength" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
-  <data name="username.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 25</value>
+  <data name="defFileTypes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 22</value>
   </data>
-  <data name="username.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="defFileTypes.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="username.Text" xml:space="preserve">
-    <value>skyvision</value>
+  <data name="defFileTypes.Text" xml:space="preserve">
+    <value>.dsi .mpg</value>
   </data>
-  <data name="username.WordWrap" type="System.Boolean, mscorlib">
+  <data name="defFileTypes.WordWrap" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="&gt;&gt;username.Name" xml:space="preserve">
-    <value>username</value>
-  </data>
-  <data name="&gt;&gt;username.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;username.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;username.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="passwordLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="passwordLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="passwordLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 65</value>
-  </data>
-  <data name="passwordLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 17</value>
-  </data>
-  <data name="passwordLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="passwordLabel.Text" xml:space="preserve">
-    <value>&amp;Password</value>
-  </data>
-  <data name="passwordLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.Name" xml:space="preserve">
-    <value>passwordLabel</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="usernameLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="usernameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="usernameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="usernameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 17</value>
-  </data>
-  <data name="usernameLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="usernameLabel.Text" xml:space="preserve">
-    <value>&amp;Username</value>
-  </data>
-  <data name="usernameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.Name" xml:space="preserve">
-    <value>usernameLabel</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="password.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 62</value>
-  </data>
-  <data name="password.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="password.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
-    <value>*</value>
-  </data>
-  <data name="password.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 25</value>
-  </data>
-  <data name="password.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="password.Text" xml:space="preserve">
-    <value>sky</value>
-  </data>
-  <data name="password.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;password.Name" xml:space="preserve">
-    <value>password</value>
-  </data>
-  <data name="&gt;&gt;password.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;password.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;password.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;defFileTypes.Name" xml:space="preserve">
     <value>defFileTypes</value>
@@ -561,6 +483,27 @@
   <data name="&gt;&gt;defFileTypes.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="fileTypesLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="fileTypesLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="fileTypesLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 105</value>
+  </data>
+  <data name="fileTypesLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 16</value>
+  </data>
+  <data name="fileTypesLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="fileTypesLabel.Text" xml:space="preserve">
+    <value>&amp;File Types</value>
+  </data>
+  <data name="fileTypesLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="&gt;&gt;fileTypesLabel.Name" xml:space="preserve">
     <value>fileTypesLabel</value>
   </data>
@@ -572,6 +515,24 @@
   </data>
   <data name="&gt;&gt;fileTypesLabel.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="defDest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 63</value>
+  </data>
+  <data name="defDest.MaxLength" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="defDest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 22</value>
+  </data>
+  <data name="defDest.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="defDest.Text" xml:space="preserve">
+    <value>C:\\Users\skyvision\documents\PS\Full Dome Vids\</value>
+  </data>
+  <data name="defDest.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;defDest.Name" xml:space="preserve">
     <value>defDest</value>
@@ -585,6 +546,24 @@
   <data name="&gt;&gt;defDest.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="defSource.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 25</value>
+  </data>
+  <data name="defSource.MaxLength" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="defSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 22</value>
+  </data>
+  <data name="defSource.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="defSource.Text" xml:space="preserve">
+    <value>\\ds-sound\e\svr\output\</value>
+  </data>
+  <data name="defSource.WordWrap" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;defSource.Name" xml:space="preserve">
     <value>defSource</value>
   </data>
@@ -597,6 +576,27 @@
   <data name="&gt;&gt;defSource.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="destLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="destLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="destLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 65</value>
+  </data>
+  <data name="destLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 16</value>
+  </data>
+  <data name="destLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="destLabel.Text" xml:space="preserve">
+    <value>&amp;Destination</value>
+  </data>
+  <data name="destLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="&gt;&gt;destLabel.Name" xml:space="preserve">
     <value>destLabel</value>
   </data>
@@ -608,6 +608,27 @@
   </data>
   <data name="&gt;&gt;destLabel.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="sourceLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="sourceLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="sourceLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="sourceLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 16</value>
+  </data>
+  <data name="sourceLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="sourceLabel.Text" xml:space="preserve">
+    <value>&amp;Source</value>
+  </data>
+  <data name="sourceLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="&gt;&gt;sourceLabel.Name" xml:space="preserve">
     <value>sourceLabel</value>
@@ -646,132 +667,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;defaultsBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="defSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 25</value>
-  </data>
-  <data name="defSource.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="defSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 25</value>
-  </data>
-  <data name="defSource.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="defSource.Text" xml:space="preserve">
-    <value>\\ds-sound\e\svr\output\</value>
-  </data>
-  <data name="defSource.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;defSource.Name" xml:space="preserve">
-    <value>defSource</value>
-  </data>
-  <data name="&gt;&gt;defSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;defSource.Parent" xml:space="preserve">
-    <value>defaultsBox</value>
-  </data>
-  <data name="&gt;&gt;defSource.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="destLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="destLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="destLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 65</value>
-  </data>
-  <data name="destLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
-  </data>
-  <data name="destLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="destLabel.Text" xml:space="preserve">
-    <value>&amp;Destination</value>
-  </data>
-  <data name="destLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;destLabel.Name" xml:space="preserve">
-    <value>destLabel</value>
-  </data>
-  <data name="&gt;&gt;destLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;destLabel.Parent" xml:space="preserve">
-    <value>defaultsBox</value>
-  </data>
-  <data name="&gt;&gt;destLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="sourceLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="sourceLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="sourceLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="sourceLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 17</value>
-  </data>
-  <data name="sourceLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="sourceLabel.Text" xml:space="preserve">
-    <value>&amp;Source</value>
-  </data>
-  <data name="sourceLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;sourceLabel.Name" xml:space="preserve">
-    <value>sourceLabel</value>
-  </data>
-  <data name="&gt;&gt;sourceLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sourceLabel.Parent" xml:space="preserve">
-    <value>defaultsBox</value>
-  </data>
-  <data name="&gt;&gt;sourceLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="defDest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 63</value>
-  </data>
-  <data name="defDest.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="defDest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 25</value>
-  </data>
-  <data name="defDest.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="defDest.Text" xml:space="preserve">
-    <value>C:\\Users\skyvision\documents\PS\Full Dome Vids\</value>
-  </data>
-  <data name="defDest.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;defDest.Name" xml:space="preserve">
-    <value>defDest</value>
-  </data>
-  <data name="&gt;&gt;defDest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;defDest.Parent" xml:space="preserve">
-    <value>defaultsBox</value>
-  </data>
-  <data name="&gt;&gt;defDest.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="cancelButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -831,77 +726,14 @@
   <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="defFileTypes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 103</value>
-  </data>
-  <data name="defFileTypes.MaxLength" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="defFileTypes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 25</value>
-  </data>
-  <data name="defFileTypes.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="defFileTypes.Text" xml:space="preserve">
-    <value>.dsi .mpg</value>
-  </data>
-  <data name="defFileTypes.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;defFileTypes.Name" xml:space="preserve">
-    <value>defFileTypes</value>
-  </data>
-  <data name="&gt;&gt;defFileTypes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;defFileTypes.Parent" xml:space="preserve">
-    <value>defaultsBox</value>
-  </data>
-  <data name="&gt;&gt;defFileTypes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="fileTypesLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="fileTypesLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="fileTypesLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 105</value>
-  </data>
-  <data name="fileTypesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
-  </data>
-  <data name="fileTypesLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="fileTypesLabel.Text" xml:space="preserve">
-    <value>&amp;File Types</value>
-  </data>
-  <data name="fileTypesLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;fileTypesLabel.Name" xml:space="preserve">
-    <value>fileTypesLabel</value>
-  </data>
-  <data name="&gt;&gt;fileTypesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fileTypesLabel.Parent" xml:space="preserve">
-    <value>defaultsBox</value>
-  </data>
-  <data name="&gt;&gt;fileTypesLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>544, 341</value>
+    <value>544, 342</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft NeoGothic, 9.75pt</value>
+    <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

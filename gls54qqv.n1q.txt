@@ -1,0 +1,47 @@
+﻿Merge branch 'dev' into tobias
+
+Conflicts:
+	KingPin/KingPin.v11.suo
+	KingPin/Planetarium Utility/Main.cs
+	KingPin/Planetarium Utility/OptionsMenu.Designer.cs
+	KingPin/Planetarium Utility/bin/Debug/Planetarium Utility.exe
+	KingPin/Planetarium Utility/bin/Debug/Planetarium Utility.pdb
+	KingPin/Planetarium Utility/obj/Debug/Planetarium Utility.csproj.FileListAbsolute.txt
+	KingPin/Planetarium Utility/obj/Debug/Planetarium Utility.csproj.GenerateResource.Cache
+	KingPin/Planetarium Utility/obj/Debug/Planetarium Utility.exe
+	KingPin/Planetarium Utility/obj/Debug/Planetarium Utility.pdb
+	KingPin/Planetarium Utility/settingWindow.en.resx
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch tobias
+# Your branch is ahead of 'origin/tobias' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   KingPin/Planetarium Utility/Main.Designer.cs
+#	modified:   KingPin/Planetarium Utility/Main.cs
+#	modified:   KingPin/Planetarium Utility/Main.resx
+#	new file:   KingPin/Planetarium Utility/OptionsMenu.Designer.cs
+#	modified:   KingPin/Planetarium Utility/Planetarium Utility.csproj
+#	new file:   KingPin/Planetarium Utility/UserControl1.Designer.cs
+#	new file:   KingPin/Planetarium Utility/UserControl1.cs
+#	new file:   KingPin/Planetarium Utility/UserControl1.resx
+#	modified:   KingPin/Planetarium Utility/bin/Debug/Planetarium Utility.vshost.exe
+#	modified:   KingPin/Planetarium Utility/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+#	modified:   KingPin/Planetarium Utility/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   KingPin/Planetarium Utility/obj/Debug/Planetarium Utility.csproj.FileListAbsolute.txt
+#	new file:   KingPin/Planetarium Utility/obj/Debug/Planetarium Utility.pdb
+#	new file:   KingPin/Planetarium Utility/obj/Debug/Planetarium_Utility.UserControl1.resources
+#	modified:   KingPin/Planetarium Utility/settingWindow.en.resx
+#	deleted:    TextbyVic.txt
+#
+

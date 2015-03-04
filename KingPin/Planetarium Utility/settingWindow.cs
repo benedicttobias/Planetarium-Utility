@@ -28,6 +28,11 @@ namespace Planetarium_Utility
 
         }
 
+        private void settingWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

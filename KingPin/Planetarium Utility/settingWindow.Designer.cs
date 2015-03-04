@@ -30,24 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingWindow));
             this.renderersBox = new System.Windows.Forms.GroupBox();
+            this.rendererNum = new System.Windows.Forms.ComboBox();
             this.rendererName = new System.Windows.Forms.TextBox();
             this.rendererNumberLabel = new System.Windows.Forms.Label();
             this.rendererNameLabel = new System.Windows.Forms.Label();
-            this.rendererNum = new System.Windows.Forms.ComboBox();
             this.authBox = new System.Windows.Forms.GroupBox();
+            this.password = new System.Windows.Forms.TextBox();
             this.username = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
-            this.password = new System.Windows.Forms.TextBox();
             this.defaultsBox = new System.Windows.Forms.GroupBox();
+            this.defFileTypes = new System.Windows.Forms.TextBox();
+            this.fileTypesLabel = new System.Windows.Forms.Label();
+            this.defDest = new System.Windows.Forms.TextBox();
             this.defSource = new System.Windows.Forms.TextBox();
             this.destLabel = new System.Windows.Forms.Label();
             this.sourceLabel = new System.Windows.Forms.Label();
-            this.defDest = new System.Windows.Forms.TextBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.defFileTypes = new System.Windows.Forms.TextBox();
-            this.fileTypesLabel = new System.Windows.Forms.Label();
             this.renderersBox.SuspendLayout();
             this.authBox.SuspendLayout();
             this.defaultsBox.SuspendLayout();
@@ -65,6 +65,25 @@
             resources.ApplyResources(this.renderersBox, "renderersBox");
             this.renderersBox.Name = "renderersBox";
             this.renderersBox.TabStop = false;
+            // 
+            // rendererNum
+            // 
+            this.rendererNum.BackColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.rendererNum, "rendererNum");
+            this.rendererNum.ForeColor = System.Drawing.Color.LightGray;
+            this.rendererNum.FormattingEnabled = true;
+            this.rendererNum.Items.AddRange(new object[] {
+            resources.GetString("rendererNum.Items"),
+            resources.GetString("rendererNum.Items1"),
+            resources.GetString("rendererNum.Items2"),
+            resources.GetString("rendererNum.Items3"),
+            resources.GetString("rendererNum.Items4"),
+            resources.GetString("rendererNum.Items5"),
+            resources.GetString("rendererNum.Items6"),
+            resources.GetString("rendererNum.Items7"),
+            resources.GetString("rendererNum.Items8"),
+            resources.GetString("rendererNum.Items9")});
+            this.rendererNum.Name = "rendererNum";
             // 
             // rendererName
             // 
@@ -89,25 +108,6 @@
             this.rendererNameLabel.ForeColor = System.Drawing.Color.LightGray;
             this.rendererNameLabel.Name = "rendererNameLabel";
             // 
-            // rendererNum
-            // 
-            this.rendererNum.BackColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.rendererNum, "rendererNum");
-            this.rendererNum.ForeColor = System.Drawing.Color.LightGray;
-            this.rendererNum.FormattingEnabled = true;
-            this.rendererNum.Items.AddRange(new object[] {
-            resources.GetString("rendererNum.Items"),
-            resources.GetString("rendererNum.Items1"),
-            resources.GetString("rendererNum.Items2"),
-            resources.GetString("rendererNum.Items3"),
-            resources.GetString("rendererNum.Items4"),
-            resources.GetString("rendererNum.Items5"),
-            resources.GetString("rendererNum.Items6"),
-            resources.GetString("rendererNum.Items7"),
-            resources.GetString("rendererNum.Items8"),
-            resources.GetString("rendererNum.Items9")});
-            this.rendererNum.Name = "rendererNum";
-            // 
             // authBox
             // 
             this.authBox.BackColor = System.Drawing.Color.Black;
@@ -120,6 +120,15 @@
             resources.ApplyResources(this.authBox, "authBox");
             this.authBox.Name = "authBox";
             this.authBox.TabStop = false;
+            // 
+            // password
+            // 
+            this.password.BackColor = System.Drawing.Color.Black;
+            this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.password.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.password, "password");
+            this.password.Name = "password";
+            this.password.UseSystemPasswordChar = true;
             // 
             // username
             // 
@@ -143,15 +152,6 @@
             this.usernameLabel.ForeColor = System.Drawing.Color.LightGray;
             this.usernameLabel.Name = "usernameLabel";
             // 
-            // password
-            // 
-            this.password.BackColor = System.Drawing.Color.Black;
-            this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.password.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.password, "password");
-            this.password.Name = "password";
-            this.password.UseSystemPasswordChar = true;
-            // 
             // defaultsBox
             // 
             this.defaultsBox.BackColor = System.Drawing.Color.Black;
@@ -166,6 +166,29 @@
             resources.ApplyResources(this.defaultsBox, "defaultsBox");
             this.defaultsBox.Name = "defaultsBox";
             this.defaultsBox.TabStop = false;
+            // 
+            // defFileTypes
+            // 
+            this.defFileTypes.BackColor = System.Drawing.Color.Black;
+            this.defFileTypes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.defFileTypes.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.defFileTypes, "defFileTypes");
+            this.defFileTypes.Name = "defFileTypes";
+            // 
+            // fileTypesLabel
+            // 
+            resources.ApplyResources(this.fileTypesLabel, "fileTypesLabel");
+            this.fileTypesLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fileTypesLabel.ForeColor = System.Drawing.Color.LightGray;
+            this.fileTypesLabel.Name = "fileTypesLabel";
+            // 
+            // defDest
+            // 
+            this.defDest.BackColor = System.Drawing.Color.Black;
+            this.defDest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.defDest.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.defDest, "defDest");
+            this.defDest.Name = "defDest";
             // 
             // defSource
             // 
@@ -189,14 +212,6 @@
             this.sourceLabel.ForeColor = System.Drawing.Color.LightGray;
             this.sourceLabel.Name = "sourceLabel";
             // 
-            // defDest
-            // 
-            this.defDest.BackColor = System.Drawing.Color.Black;
-            this.defDest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.defDest.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.defDest, "defDest");
-            this.defDest.Name = "defDest";
-            // 
             // cancelButton
             // 
             this.cancelButton.BackColor = System.Drawing.Color.Black;
@@ -219,21 +234,6 @@
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // defFileTypes
-            // 
-            this.defFileTypes.BackColor = System.Drawing.Color.Black;
-            this.defFileTypes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.defFileTypes.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.defFileTypes, "defFileTypes");
-            this.defFileTypes.Name = "defFileTypes";
-            // 
-            // fileTypesLabel
-            // 
-            resources.ApplyResources(this.fileTypesLabel, "fileTypesLabel");
-            this.fileTypesLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fileTypesLabel.ForeColor = System.Drawing.Color.LightGray;
-            this.fileTypesLabel.Name = "fileTypesLabel";
-            // 
             // settingWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -252,6 +252,7 @@
             this.Name = "settingWindow";
             this.ShowIcon = false;
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.settingWindow_Load);
             this.renderersBox.ResumeLayout(false);
             this.renderersBox.PerformLayout();
             this.authBox.ResumeLayout(false);
