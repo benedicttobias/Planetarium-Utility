@@ -98,6 +98,7 @@ namespace Planetarium_Utility
             password.Text = value[3];
             defSource.Text = value[4];
             defDest.Text = value[5];
+            defDest.Text = value[5];
             defFileTypes.Text = value[6];
         }
 
