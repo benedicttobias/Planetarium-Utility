@@ -13,6 +13,18 @@ namespace Planetarium_Utility
 {
     public partial class settingWindow : Form
     {
+        /*********************************************************/
+        /*  Call function to other forms                         */
+        /*********************************************************/
+        // Return default file types called by main program
+        public String[] getDefFileTypes
+        {
+            get 
+            { 
+                return new [] { defFileTypes.Text }; 
+            }
+        }
+
         // VARIABLES
         string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                // Path to document location

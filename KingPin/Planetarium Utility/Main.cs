@@ -15,30 +15,52 @@ namespace Planetarium_Utility
     public partial class Main : Form
     {
         // Housekeeping section  
-        settingWindow options;
+        public settingWindow settingWindow;
 
         public Main()
         {
             // Initial setup of Planetarium Utility
             InitializeComponent();
             initializeFilesListView();
+            initializeLogList();
 
             // Initialize option user control
-            options = new settingWindow();
+            settingWindow = new settingWindow();
 
             // Initialize Form size
             this.Height = 360;
             this.Width  = 512;
-           
+            
+            
+
+        }
+
+        private void initializeLogList()
+        {
+            // Clear the items
+            logListView.Clear();
+
+            // Initialize list header
+            ColumnHeader columnHeader1 = new ColumnHeader();
+            columnHeader1.Text = "Log";
+            this.logListView.Columns.AddRange(new ColumnHeader[] { columnHeader1 });
+
+            // Edit properties for searched items
+            logListView.View = View.Details;
+            logListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            logListView.LabelEdit = true;
+            logListView.CheckBoxes = false;
+            logListView.GridLines = true;
+            logListView.Sorting = SortOrder.None;
         }
 
         private void optionsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             // Show the options menu or create one if its not exist
-            if (options == null || options.IsDisposed == true)
-                options = new settingWindow();
+            if (settingWindow == null || settingWindow.IsDisposed == true)
+                settingWindow = new settingWindow();
 
-            options.Show();
+            settingWindow.Show();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,6 +196,24 @@ namespace Planetarium_Utility
 
             // Acknowledge the user the number of files added
             sendToLog("Total file(s) added: " + fileCounter);
+
+            // Check file(s) based on default files types
+            checkDefaultFileTypes();
+        }
+
+        private void checkDefaultFileTypes()
+        {
+            // Get default file types from setting window
+            foreach (String extension in settingWindow.getDefFileTypes)
+                sendToLog("add: " + extension);
+            
+
+            //foreach (ListViewItem file in filesListView.Items)
+            //{
+            //    foreach (string extension in settingWindow.getDefFileTypes)
+            //        if (file.SubItems[2].Text.Contains(extension))
+            //            file.Checked = true;
+            //}
         }
 
         private string findChannel(string fullName)
