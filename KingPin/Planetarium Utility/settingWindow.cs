@@ -69,7 +69,7 @@ namespace Planetarium_Utility
         private void setDefaultValue()
         {
             string[] lines = File.ReadAllLines(myDocPath+fileName);
-            string[] values = new string[7];
+            string[] value = new string[7];
                     /* Order of values:
                      *  rendererName
                      *  rendererNum
@@ -86,19 +86,19 @@ namespace Planetarium_Utility
             {
                 if (!lines[i].Contains(comment))
                 {
-                    values[v] = lines[i];
+                    value[v] = lines[i];
                     v += 1;
                 }
             }
 
             // Assign values to variables based on the order
-            rendererName.Text = values[0];
-            rendererNum.Text = values[1];
-            username.Text = values[2];
-            password.Text = values[3];
-            defSource.Text = values[4];
-            defDest.Text = values[5];
-            defFileTypes.Text = values[6];
+            rendererName.Text = value[0];
+            rendererNum.Text = value[1];
+            username.Text = value[2];
+            password.Text = value[3];
+            defSource.Text = value[4];
+            defDest.Text = value[5];
+            defFileTypes.Text = value[6];
         }
 
         //
