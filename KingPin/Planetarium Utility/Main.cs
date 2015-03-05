@@ -204,8 +204,8 @@ namespace Planetarium_Utility
         private void checkDefaultFileTypes()
         {
             // Get default file types from setting window
-            foreach (String extension in settingWindow.getDefFileTypes)
-                sendToLog("add: " + extension);
+            //foreach (String extension in settingWindow.getDefFileTypes)
+            //    sendToLog("add: " + extension);
             
 
             //foreach (ListViewItem file in filesListView.Items)

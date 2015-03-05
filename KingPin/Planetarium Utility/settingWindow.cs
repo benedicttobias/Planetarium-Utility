@@ -21,7 +21,10 @@ namespace Planetarium_Utility
         {
             get 
             { 
-                return new [] { defFileTypes.Text }; 
+                //string[] extensions;               
+
+                //// Split string into array of string
+                //extensions = defFileTypes.Text.Split(" ");
             }
         }
 
