@@ -28,9 +28,10 @@ namespace Planetarium_Utility
             this.setDefaultValue();
         }
 
-        // CLOSE WINDOW WITHOUT SAVING CHANGES
+        // CLOSE WINDOW AND REVERT TO PREVIOUS SETTING
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            this.setDefaultValue();
             this.Hide();
         }
 
@@ -68,20 +69,36 @@ namespace Planetarium_Utility
         private void setDefaultValue()
         {
             string[] lines = File.ReadAllLines(myDocPath+fileName);
-            string[] values;
+            string[] values = new string[7];
                     /* Order of values:
+                     *  rendererName
+                     *  rendererNum
+                     *  username
+                     *  password
+                     *  defSource
+                     *  defDest
+                     *  defFileTypes
                      */
-            int      v = 0;
 
             // Exclude comments from the list. Store only values in a new array.
+            int v = 0;
             for (int i=0; i<lines.Length; i++)
             {
                 if (!lines[i].Contains(comment))
+                {
                     values[v] = lines[i];
+                    v += 1;
+                }
             }
 
-            //renderer
-
+            // Assign values to variables based on the order
+            rendererName.Text = values[0];
+            rendererNum.Text = values[1];
+            username.Text = values[2];
+            password.Text = values[3];
+            defSource.Text = values[4];
+            defDest.Text = values[5];
+            defFileTypes.Text = values[6];
         }
 
         //

@@ -11,4 +11,3 @@ C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\en\Planetarium Utility.resources.dll
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.exe
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.pdb
-C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.csprojResolveAssemblyReference.cache

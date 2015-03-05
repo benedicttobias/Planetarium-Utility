@@ -39,7 +39,7 @@
             this.copyProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusUpdateStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.fullDomeDistributorTabPage = new System.Windows.Forms.TabPage();
             this.logListView = new System.Windows.Forms.ListView();
             this.resetButton = new System.Windows.Forms.Button();
             this.distributeButton = new System.Windows.Forms.Button();
@@ -49,14 +49,14 @@
             this.pathGroupBox = new System.Windows.Forms.GroupBox();
             this.destinationButton = new System.Windows.Forms.Button();
             this.projectButton = new System.Windows.Forms.Button();
-            this.destiantionTextBox = new System.Windows.Forms.TextBox();
+            this.destinationTextBox = new System.Windows.Forms.TextBox();
             this.projectTextBox = new System.Windows.Forms.TextBox();
             this.destinationLabel = new System.Windows.Forms.Label();
             this.projectLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.fullDomeDistributorTabPage.SuspendLayout();
             this.filesGroupBox.SuspendLayout();
             this.pathGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -120,7 +120,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyProgressBar,
             this.statusUpdateStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 425);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 299);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(496, 22);
             this.statusStrip1.TabIndex = 18;
@@ -142,28 +142,28 @@
             // 
             // mainTabControl
             // 
-            this.mainTabControl.Controls.Add(this.tabPage2);
+            this.mainTabControl.Controls.Add(this.fullDomeDistributorTabPage);
             this.mainTabControl.Location = new System.Drawing.Point(0, 27);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(497, 396);
+            this.mainTabControl.Size = new System.Drawing.Size(497, 272);
             this.mainTabControl.TabIndex = 19;
             // 
-            // tabPage2
+            // fullDomeDistributorTabPage
             // 
-            this.tabPage2.Controls.Add(this.logListView);
-            this.tabPage2.Controls.Add(this.resetButton);
-            this.tabPage2.Controls.Add(this.distributeButton);
-            this.tabPage2.Controls.Add(this.logButton);
-            this.tabPage2.Controls.Add(this.filesGroupBox);
-            this.tabPage2.Controls.Add(this.pathGroupBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(489, 370);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.fullDomeDistributorTabPage.Controls.Add(this.logListView);
+            this.fullDomeDistributorTabPage.Controls.Add(this.resetButton);
+            this.fullDomeDistributorTabPage.Controls.Add(this.distributeButton);
+            this.fullDomeDistributorTabPage.Controls.Add(this.logButton);
+            this.fullDomeDistributorTabPage.Controls.Add(this.filesGroupBox);
+            this.fullDomeDistributorTabPage.Controls.Add(this.pathGroupBox);
+            this.fullDomeDistributorTabPage.Location = new System.Drawing.Point(4, 22);
+            this.fullDomeDistributorTabPage.Name = "fullDomeDistributorTabPage";
+            this.fullDomeDistributorTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.fullDomeDistributorTabPage.Size = new System.Drawing.Size(489, 246);
+            this.fullDomeDistributorTabPage.TabIndex = 1;
+            this.fullDomeDistributorTabPage.Text = "Full Dome Distributor";
+            this.fullDomeDistributorTabPage.UseVisualStyleBackColor = true;
             // 
             // logListView
             // 
@@ -172,6 +172,7 @@
             this.logListView.Size = new System.Drawing.Size(470, 112);
             this.logListView.TabIndex = 31;
             this.logListView.UseCompatibleStateImageBehavior = false;
+            this.logListView.View = System.Windows.Forms.View.Details;
             this.logListView.Visible = false;
             // 
             // resetButton
@@ -220,12 +221,13 @@
             this.filesListView.Size = new System.Drawing.Size(470, 113);
             this.filesListView.TabIndex = 0;
             this.filesListView.UseCompatibleStateImageBehavior = false;
+            this.filesListView.View = System.Windows.Forms.View.Details;
             // 
             // pathGroupBox
             // 
             this.pathGroupBox.Controls.Add(this.destinationButton);
             this.pathGroupBox.Controls.Add(this.projectButton);
-            this.pathGroupBox.Controls.Add(this.destiantionTextBox);
+            this.pathGroupBox.Controls.Add(this.destinationTextBox);
             this.pathGroupBox.Controls.Add(this.projectTextBox);
             this.pathGroupBox.Controls.Add(this.destinationLabel);
             this.pathGroupBox.Controls.Add(this.projectLabel);
@@ -244,6 +246,7 @@
             this.destinationButton.TabIndex = 5;
             this.destinationButton.Text = "...";
             this.destinationButton.UseVisualStyleBackColor = true;
+            this.destinationButton.Click += new System.EventHandler(this.destinationButton_Click);
             // 
             // projectButton
             // 
@@ -253,18 +256,21 @@
             this.projectButton.TabIndex = 4;
             this.projectButton.Text = "...";
             this.projectButton.UseVisualStyleBackColor = true;
+            this.projectButton.Click += new System.EventHandler(this.projectButton_Click);
             // 
-            // destiantionTextBox
+            // destinationTextBox
             // 
-            this.destiantionTextBox.Location = new System.Drawing.Point(78, 35);
-            this.destiantionTextBox.Name = "destiantionTextBox";
-            this.destiantionTextBox.Size = new System.Drawing.Size(366, 20);
-            this.destiantionTextBox.TabIndex = 3;
+            this.destinationTextBox.Location = new System.Drawing.Point(78, 35);
+            this.destinationTextBox.Name = "destinationTextBox";
+            this.destinationTextBox.ReadOnly = true;
+            this.destinationTextBox.Size = new System.Drawing.Size(366, 20);
+            this.destinationTextBox.TabIndex = 3;
             // 
             // projectTextBox
             // 
             this.projectTextBox.Location = new System.Drawing.Point(78, 13);
             this.projectTextBox.Name = "projectTextBox";
+            this.projectTextBox.ReadOnly = true;
             this.projectTextBox.Size = new System.Drawing.Size(366, 20);
             this.projectTextBox.TabIndex = 2;
             // 
@@ -290,7 +296,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 447);
+            this.ClientSize = new System.Drawing.Size(496, 321);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -303,7 +309,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.fullDomeDistributorTabPage.ResumeLayout(false);
             this.filesGroupBox.ResumeLayout(false);
             this.pathGroupBox.ResumeLayout(false);
             this.pathGroupBox.PerformLayout();
@@ -325,7 +331,7 @@
         private System.Windows.Forms.ToolStripProgressBar copyProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusUpdateStatusLabel;
         private System.Windows.Forms.TabControl mainTabControl;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage fullDomeDistributorTabPage;
         private System.Windows.Forms.ListView logListView;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button distributeButton;
@@ -335,7 +341,7 @@
         private System.Windows.Forms.GroupBox pathGroupBox;
         private System.Windows.Forms.Button destinationButton;
         private System.Windows.Forms.Button projectButton;
-        private System.Windows.Forms.TextBox destiantionTextBox;
+        private System.Windows.Forms.TextBox destinationTextBox;
         private System.Windows.Forms.TextBox projectTextBox;
         private System.Windows.Forms.Label destinationLabel;
         private System.Windows.Forms.Label projectLabel;
