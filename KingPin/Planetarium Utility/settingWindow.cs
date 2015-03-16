@@ -21,12 +21,22 @@ namespace Planetarium_Utility
         {
             get 
             { 
-                //string[] extensions;               
+                String[] extensions;               
 
-                //// Split string into array of string
-                //extensions = defFileTypes.Text.Split(" ");
+                // Split string into array of string
+                extensions = defFileTypes.Text.Split(' ');
+
+                return extensions;
             }
         }
+
+        public string getDestination  { get { return defDest.Text;     } }
+        public string getDefSource    { get { return defSource.Text;   } }
+        public string getPassword     { get { return password.Text;    } }
+        public string getUsername     { get { return username.Text;    } }
+        public string getRendererName { get { return rendererName.Text;} }
+        public string getRendererNum  { get { return rendererNum.Text; } }
+        
 
         // VARIABLES
         string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
