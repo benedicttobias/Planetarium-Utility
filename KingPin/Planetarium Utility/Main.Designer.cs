@@ -41,7 +41,7 @@
             this.logListView = new System.Windows.Forms.ListView();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.FullDomeDist = new System.Windows.Forms.TabPage();
-            this.fullDomeDist1 = new Planetarium_Utility.FullDomeDist(this);
+            this.fullDomeDist1 = new Planetarium_Utility.FullDomeDist();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();

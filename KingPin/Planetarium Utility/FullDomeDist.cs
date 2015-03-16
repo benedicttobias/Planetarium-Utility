@@ -16,9 +16,9 @@ namespace Planetarium_Utility
         // Connecting to setting form
         public settingWindow settingWindow;
 
-        // Full Dome Distributor construction
-        Main mainParent = null;
-        public FullDomeDist(Main mainParent)
+        public Main ParentForm { get; set; }
+
+        public FullDomeDist()
         {
             // Initialize option user control
             settingWindow = new settingWindow();
@@ -27,20 +27,6 @@ namespace Planetarium_Utility
             InitializeComponent();
             initializeFilesListView();
             initializeDefaultValue();
-
-            // Set parent to Main
-            this.mainParent = mainParent;
-
-            // Attempt to populate files
-            attemptListFile();
-        }
-
-        public FullDomeDist()
-        {
-            // Note: This initial function is not called.
-            // also, in main.designer.cs, fulldomedistributor forced to call contructor
-            // with argument of main form so it can call method in main form.
-            // see details: https://www.daniweb.com/software-development/csharp/threads/121521/setting-parent-and-child-windows
         }
 
         private void attemptListFile()
@@ -70,6 +56,7 @@ namespace Planetarium_Utility
 
             // Open browser to select project folder
             FolderBrowserDialog selectFolder = new FolderBrowserDialog();
+            selectFolder.SelectedPath = projectTextBox.Text;
 
             // Convert to path text
             DialogResult result = selectFolder.ShowDialog();
@@ -98,14 +85,20 @@ namespace Planetarium_Utility
             filesListView.Columns.Add("Extension");
             filesListView.Columns.Add("Channel");
             filesListView.Columns.Add("Source");
-            //filesListView.Columns.Add("Destination");
+            filesListView.Columns.Add("Destination");
 
             // Edit properties for searched items
             filesListView.View = View.Details;
-            filesListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             filesListView.GridLines = true;
             filesListView.Sorting = SortOrder.Ascending;
             filesListView.CheckBoxes = true;
+
+            // Hide source and destination
+            filesListView.Columns[0].Width = 335;
+            filesListView.Columns[1].Width = 60;
+            filesListView.Columns[2].Width = 75;
+            filesListView.Columns[3].Width = 0;
+            filesListView.Columns[4].Width = 0;
         }
 
         private void listFilesInPath(string path)
@@ -130,15 +123,10 @@ namespace Planetarium_Utility
                 query.SubItems.Add(foundFile.Extension);
                 query.SubItems.Add(findChannel(foundFile.FullName));
                 query.SubItems.Add(foundFile.FullName);
-                //query.SubItems.Add(copyTo(foundFile.FullName, foundFile.Name));
+                query.SubItems.Add(copyTo(foundFile.FullName, foundFile.Name));
 
                 // Insert item to file list and log it
                 filesListView.Items.Add(query);
-
-                // Resize all columns as files populate
-                filesListView.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.ColumnContent);
-                filesListView.AutoResizeColumn(1, ColumnHeaderAutoResizeStyle.ColumnContent);
-                filesListView.AutoResizeColumn(2, ColumnHeaderAutoResizeStyle.ColumnContent);
 
                 sendToLog("Added: " + foundFile.Name);
 
@@ -152,13 +140,25 @@ namespace Planetarium_Utility
             checkDefaultFileTypes();
         }
 
+        private string copyTo(string fullName, string fileName)
+        {
+            string destination = "Unknown";
+
+            if (findChannel(fullName) != "Unknown")
+            {
+                destination = string.Format("\\\\" + findChannel(fullName) + "\\" + destinationTextBox.Text);
+            }
+
+            return destination;
+        }
+
         private void checkDefaultFileTypes()
         {
             int checkCounter = 0; // Count the number of files checked by default ext
 
             // Get default file types from setting window
             foreach (String extension in settingWindow.getDefFileTypes)
-                sendToLog("Adding extension: " + extension);
+                sendToLog("Checked all " + extension + " file(s)");
 
             // Check if the file extension is in the default
             foreach (ListViewItem file in filesListView.Items)
@@ -181,36 +181,46 @@ namespace Planetarium_Utility
 
         private string findChannel(string fullName)
         {
-            string destination;
+            string destination = null;
+            int    totalComputer;
+            string computerPrefix = settingWindow.getRendererName;
+            string computerStringNumber;
 
-            /* THIS FUNCTION CONTAIN HARD CODE */
-
-            // Find the destination based on the file name postfix
-            if (fullName.Contains("01"))
-                destination = "ds-01";
-            else if (fullName.Contains("02"))
-                destination = "ds-02";
-            else if (fullName.Contains("03"))
-                destination = "ds-03";
-            else if (fullName.Contains("04"))
-                destination = "ds-04";
-            else if (fullName.Contains("05"))
-                destination = "ds-05";
-            else if (fullName.Contains("06"))
-                destination = "ds-06";
-            else if (fullName.Contains("07"))
-                destination = "ds-07";
-            else if (fullName.Contains("08"))
-                destination = "ds-08";
+            // Get total computer
+            if(Int32.TryParse(settingWindow.getRendererNum, out totalComputer))
+            {
+                ParentForm.sendToLog("Finding " + fullName + " destination");
+            }
             else
+                ParentForm.sendToLog("Total computer is not valid");
+
+            for (int computerNumber = 1; computerNumber <= totalComputer; computerNumber++)
+            {
+                // Set the computer name (01, 02, 03...)
+                computerStringNumber = string.Format("0" + computerNumber.ToString());
+
+                // Assign to particular computer number
+                if (fullName.Contains(computerStringNumber))
+                    destination = string.Format(computerPrefix + '-' + computerStringNumber);
+            }
+
+            // Set destination as 'Unknown' if cant found
+            if (destination == null)
+            {
                 destination = "Unknown";
+                ParentForm.sendToLog("Can't find destination for " + fullName);
+            }
+            else
+                ParentForm.sendToLog("Destination found for " + fullName + " (" + destination + ")");
 
             return destination;
         }
 
         private void sendToLog(string log)
         {
-            mainParent.sendToLog(log);
+            //main.sendToLog(log);
+
+            ParentForm.sendToLog(log);
         }
 
         private void destinationButton_Click(object sender, EventArgs e)
@@ -235,17 +245,7 @@ namespace Planetarium_Utility
 
         private void logButton_Click(object sender, EventArgs e)
         {
-            //Control parent = Parent;
-            //while (!(parent is Main))
-            //{
-            //    parent = parent.Parent;
-            //}
-
-            //Main mainProgram = (Main)parent;
-
-            //mainProgram.expandAndCollapseLog();
-
-            mainParent.expandAndCollapseLog();
+            ParentForm.expandAndCollapseLog();
         }
 
         private void resetButton_Click(object sender, EventArgs e)
@@ -253,6 +253,27 @@ namespace Planetarium_Utility
             // Initialization
             initializeFilesListView();
             initializeDefaultValue();
+        }
+
+        private void distributeButton_Click_1(object sender, EventArgs e)
+        {
+            // Check for empty copy
+            if (filesListView.Items.Count == 0)
+                ParentForm.sendToLog("Nothing to copy");
+
+            foreach (ListViewItem item in filesListView.Items)
+            {
+                // Copy file from source to destination
+                if (item.Checked == true)
+                {
+                    copyFile(item.SubItems[2].Text, item.SubItems[4].Text, item.SubItems[0].Text);
+                }
+            }
+        }
+
+        private void copyFile(string p1, string p2, string p3)
+        {
+            throw new NotImplementedException();
         }
     }
 }

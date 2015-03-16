@@ -62,6 +62,7 @@
             this.distributeButton.TabIndex = 33;
             this.distributeButton.Text = "Distribute";
             this.distributeButton.UseVisualStyleBackColor = true;
+            this.distributeButton.Click += new System.EventHandler(this.distributeButton_Click_1);
             // 
             // logButton
             // 

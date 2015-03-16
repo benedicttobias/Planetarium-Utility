@@ -16,6 +16,7 @@ namespace Planetarium_Utility
     {
         // Housekeeping section  
         public settingWindow settingWindow;
+        public FullDomeDist fullDomeDist;
 
         public Main()
         {
@@ -26,7 +27,7 @@ namespace Planetarium_Utility
 
             // Initialize option user control
             settingWindow = new settingWindow();
-            FullDomeDist fullDomeDist = new FullDomeDist(this);
+            this.fullDomeDist1.ParentForm = this;
         }
 
         public void initializeProgramSize()
@@ -117,5 +118,6 @@ namespace Planetarium_Utility
             // Update the status update
             statusUpdateStatusLabel.Text = log;
         }
+
     }
 }
