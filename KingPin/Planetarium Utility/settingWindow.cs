@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -30,14 +31,15 @@ namespace Planetarium_Utility
             }
         }
 
-        public string getDestination  { get { return defDest.Text;     } }
-        public string getDefSource    { get { return defSource.Text;   } }
-        public string getPassword     { get { return password.Text;    } }
-        public string getUsername     { get { return username.Text;    } }
-        public string getRendererName { get { return rendererName.Text;} }
-        public string getRendererNum  { get { return rendererNum.Text; } }
-        
+        // FUNCTIONS
+        public string getRendererName { get { return rendererName.Text; } }
+        public string getRendererNum  { get { return rendererNum.Text;  } }
+        public string getUsername     { get { return username.Text;     } }
+        public string getPassword     { get { return password.Text;     } }
+        public string getDestination  { get { return defDest.Text;      } }
+        public string getDefSource    { get { return defSource.Text;    } }
 
+        
         // VARIABLES
         string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                // Path to document location
@@ -118,12 +120,12 @@ namespace Planetarium_Utility
 
             // Assign values to variables based on the order
             rendererName.Text = value[0];
-            rendererNum.Text = value[1];
-            username.Text = value[2];
-            password.Text = value[3];
-            defSource.Text = value[4];
-            defDest.Text = value[5];
-            defDest.Text = value[5];
+            rendererNum.Text  = value[1];
+            username.Text     = value[2];
+            password.Text     = value[3];
+            defSource.Text    = value[4];
+            defDest.Text      = value[5];
+            defDest.Text      = value[5];
             defFileTypes.Text = value[6];
         }
 
@@ -132,5 +134,75 @@ namespace Planetarium_Utility
         {
             
         }
+
+        // VALIDATE DESTINATION PATH
+        private void defDest_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            defDest.Text = defDest.Text.Trim();
+
+            // Make sure that the path is legitimate before parsing
+            if (validatePath(defDest.Text))
+                parseToNetworkPath();
+            else
+            {
+                MessageBox.Show("Enter a valid path. Path must be a network path (begins with \"\\\""); // center this to parent by creating a custom messagebox class */
+                defDest.Focus();
+            }
+        }
+
+
+        private void defFileTypes_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        // CHANGE LOCAL ADDRESS TO NETWORK ADDRESS
+        private void parseToNetworkPath()
+        {
+            // If there is a colon, execute the string manipulation
+            if (defDest.Text.Contains(":"))
+            {
+                var sourceText = defDest.Text;
+                StringBuilder newText = new StringBuilder(sourceText);
+
+                // Find where the colon and the letter drive
+                int colon = sourceText.IndexOf(':');
+                int drive = colon - 1;
+
+                // Set letter drive to lower case and remove colon
+                newText = newText.Replace(sourceText[drive], sourceText[drive].ToString().ToLower().ToCharArray()[0]);
+                newText = newText.Remove(colon, 1);
+
+                // Update default destination with the modified string
+                defDest.Text = ("\\" + newText.ToString());
+            }
+        }
+
+
+
+        /*=============================
+         *  User Function Definitions
+         *============================*/
+
+        // CHECK TO SEE IF STRING IS LEGIT PATH
+        private bool validatePath(string path)
+        {
+            string pathRegex = @"^((([a-zA-Z]:)|(\\{1,2}\w+)|(\\{1,2}(?:(?:25[0-5]|2[0-4]\d|[01]\d\d|\d?\d)(?(?=\.?\d)\.)){4}))(\\(\w[\w ]*)))";
+            /* Regex to match valid folder paths. can be local, UNC with server name, or UNC with IP address
+             * Matches: c:\ds\dsfsdf | \\192.168.14.118\23423 | \\fsdf\23423
+             * Non-Matches:	c:\ | \\192.168.12.114 | \\fff
+             */
+            Regex pathPattern = new Regex(pathRegex);
+            return (pathPattern.IsMatch(path));
+        }
+ 
+        // CHECK TO SEE IF STRING IS A SET OF FILE TYPES
+        private bool validateFileTypes(string fileTypes)
+        {
+            return true;
+        }
+
+
     }
 }

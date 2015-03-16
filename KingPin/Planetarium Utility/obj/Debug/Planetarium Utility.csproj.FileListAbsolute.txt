@@ -5,7 +5,6 @@ C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.Main.resources
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.settingWindow.resources
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.Properties.Resources.resources
-C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.UserControl1.resources
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.settingWindow.en.resources
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.csproj.GenerateResource.Cache
 C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\en\Planetarium Utility.resources.dll
@@ -25,3 +24,6 @@ D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\D
 D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\en\Planetarium Utility.resources.dll
 D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.exe
 D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.pdb
+C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.csprojResolveAssemblyReference.cache
+C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.FileDistributor.resources
+C:\Users\Vicky\Documents\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium_Utility.FullDomeDist.resources
