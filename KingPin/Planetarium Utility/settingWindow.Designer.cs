@@ -89,10 +89,10 @@
             // 
             this.rendererName.BackColor = System.Drawing.Color.Black;
             this.rendererName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rendererName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.rendererName.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(this.rendererName, "rendererName");
             this.rendererName.Name = "rendererName";
+            this.rendererName.Leave += new System.EventHandler(this.rendererName_Leave);
             // 
             // rendererNumberLabel
             // 

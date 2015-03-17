@@ -83,6 +83,21 @@ namespace Planetarium_Utility
         }
 
 
+        // COMPUTER NAME VALIDATION
+        private void rendererName_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            rendererName.Text = rendererName.Text.Trim();
+
+            // Make sure that the path is legitimate
+            if (!validateCompName(rendererName.Text))
+            {
+                MessageBox.Show("Renderer name must consists of characters and be less than 16 characters. Dot is allowed, but cannot start with one."); // center this to parent by creating a custom messagebox class */
+                rendererName.Focus();
+            }
+        }
+
+
         // DEFAULT DESTINATION VALIDATION
         private void defDest_Leave(object sender, EventArgs e)
         {
@@ -229,7 +244,17 @@ namespace Planetarium_Utility
         }
 
 
-        // CHANGE LOCAL ADDRESS TO NETWORK ADDRESS
+        // COMPUTER NAME MUST MEET NETBIOS REQUIREMENT
+        private bool validateCompName(string name)
+        {
+            string nameRegex = @"^[A-Za-z\d_!@#$%^()\-'{}~]([A-Za-z\d_!@#$%^()\-'{}\.~]{1,14}$)";
+                // Lookup NETBios computer name to understand regex
+            Regex namePattern = new Regex(nameRegex);
+            return (namePattern.IsMatch(name));
+        }
+
+
+        /*//// CHANGE LOCAL ADDRESS TO NETWORK ADDRESS
         private void parseToNetworkPath()
         {
             var sourceText = defDest.Text;
@@ -245,7 +270,7 @@ namespace Planetarium_Utility
 
             // Update default destination with the modified string
             defDest.Text = ("\\" + newText.ToString());
-        }
+        }*/
 
 
         // CHECK TO SEE IF STRING IS LEGIT PATH
