@@ -13,9 +13,10 @@ namespace Planetarium_Utility
 {
     public partial class FullDomeDist : UserControl
     {
-        // Connecting to setting form
+        // Connecting to setting form (Options)
         public settingWindow settingWindow;
 
+        // Connecting Main form and Usercontrol (here)
         public Main ParentForm { get; set; }
 
         public FullDomeDist()
@@ -40,6 +41,7 @@ namespace Planetarium_Utility
 
         private void initializeDefaultValue()
         {
+            // Get the settings from Options
             projectTextBox.Text     = settingWindow.getDefSource;
             destinationTextBox.Text = settingWindow.getDestination;
         }
@@ -103,7 +105,8 @@ namespace Planetarium_Utility
 
         private void listFilesInPath(string path)
         {
-            int fileCounter = 0; // Number of files in a directory
+            int fileCounter = 0;        // Number of files in a directory
+            string channel = "Unknown"; // Initial destination for a file
 
             // Check directory existance
             if (Directory.Exists(path))
@@ -118,18 +121,31 @@ namespace Planetarium_Utility
             foreach (FileInfo foundFile in filesInDir)
             {
                 // Insert to Search list
+                // Table order by index:
+                // 0 : file name
+                // 1 : extension
+                // 2 : channel
+                // 3 : full original directory (source)
+                // 4 : full destination directory (destination)
+
+                // Get the destination channel/computer
+                channel = findChannel(foundFile.FullName);
+
+                // Set the content by index
                 ListViewItem query = new ListViewItem();
                 query.Text = foundFile.Name;
                 query.SubItems.Add(foundFile.Extension);
-                query.SubItems.Add(findChannel(foundFile.FullName));
+                query.SubItems.Add(channel);
                 query.SubItems.Add(foundFile.FullName);
-                query.SubItems.Add(copyTo(foundFile.FullName, foundFile.Name));
+                query.SubItems.Add(copyTo(foundFile.FullName, foundFile.Name, channel));
 
                 // Insert item to file list and log it
                 filesListView.Items.Add(query);
 
+                // Ackowledge the user
                 sendToLog("Added: " + foundFile.Name);
 
+                // Counting the files found
                 fileCounter++;
             }
 
@@ -140,14 +156,13 @@ namespace Planetarium_Utility
             checkDefaultFileTypes();
         }
 
-        private string copyTo(string fullName, string fileName)
+        private string copyTo(string fullName, string fileName, string channel)
         {
-            string destination = "Unknown";
+            string destination = "Unknown"; // Initial destination location
 
-            if (findChannel(fullName) != "Unknown")
-            {
-                destination = string.Format("\\\\" + findChannel(fullName) + "\\" + destinationTextBox.Text);
-            }
+            // Set the destination corespond to the channel if destination known
+            if (channel != "Unknown")
+                destination = string.Format("\\\\" + channel + "\\" + destinationTextBox.Text);
 
             return destination;
         }
@@ -170,33 +185,33 @@ namespace Planetarium_Utility
                     {
                         file.Checked = true;
 
+                        // Count how many file(s) checked
                         checkCounter++;
                     }
                 }
             }
 
-            // Log checked items
+            // Let user know how many items checked
             sendToLog(checkCounter + " file(s) checked");
         }
 
         private string findChannel(string fullName)
         {
-            string destination = null;
-            int    totalComputer;
-            string computerPrefix = settingWindow.getRendererName;
-            string computerStringNumber;
+            string destination = "Unknown";                        // Initial file destination
+            int    totalComputer;                                  // Number of renderer computers
+            string computerPrefix = settingWindow.getRendererName; // Prefix of computer name
+            string computerStringNumber;                           // String form of total computers
 
             // Get total computer
             if(Int32.TryParse(settingWindow.getRendererNum, out totalComputer))
-            {
                 ParentForm.sendToLog("Finding " + fullName + " destination");
-            }
             else
                 ParentForm.sendToLog("Total computer is not valid");
 
+            // Loop through all computer number to decide which channel a file fall
             for (int computerNumber = 1; computerNumber <= totalComputer; computerNumber++)
             {
-                // Set the computer name (01, 02, 03...)
+                // Set the computer name for this iteration (01, 02, 03...)
                 computerStringNumber = string.Format("0" + computerNumber.ToString());
 
                 // Assign to particular computer number
@@ -204,12 +219,9 @@ namespace Planetarium_Utility
                     destination = string.Format(computerPrefix + '-' + computerStringNumber);
             }
 
-            // Set destination as 'Unknown' if cant found
-            if (destination == null)
-            {
-                destination = "Unknown";
+            // Let the user know the destination
+            if (destination == "Unknown")
                 ParentForm.sendToLog("Can't find destination for " + fullName);
-            }
             else
                 ParentForm.sendToLog("Destination found for " + fullName + " (" + destination + ")");
 
@@ -218,8 +230,7 @@ namespace Planetarium_Utility
 
         private void sendToLog(string log)
         {
-            //main.sendToLog(log);
-
+            // Calling Main form to send log
             ParentForm.sendToLog(log);
         }
 
@@ -245,12 +256,13 @@ namespace Planetarium_Utility
 
         private void logButton_Click(object sender, EventArgs e)
         {
+            // Calling Main form to resize program
             ParentForm.expandAndCollapseLog();
         }
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            // Initialization
+            // Initialize Full Dome Distributor form 
             initializeFilesListView();
             initializeDefaultValue();
         }
@@ -261,19 +273,55 @@ namespace Planetarium_Utility
             if (filesListView.Items.Count == 0)
                 ParentForm.sendToLog("Nothing to copy");
 
+            // Loop through each list
             foreach (ListViewItem item in filesListView.Items)
             {
-                // Copy file from source to destination
+                // Copy checked file from source to destination
                 if (item.Checked == true)
                 {
+                    // subitems 2 = source
+                    // subitems 4 = destination
+                    // subitems 0 = file name
                     copyFile(item.SubItems[2].Text, item.SubItems[4].Text, item.SubItems[0].Text);
                 }
             }
         }
 
-        private void copyFile(string p1, string p2, string p3)
+        private void copyFile(string source, string destination, string fileName)
         {
-            throw new NotImplementedException();
+            // Exact file destination
+            string fullDestination = string.Format(destination + "\\" + fileName);
+
+            // Create a new target flder if needed
+            try
+            {
+                // Create new folder if there is no exist directory
+                if (!Directory.Exists(destination))
+                {
+                    ParentForm.sendToLog("Destination directory is not exist...");
+                    ParentForm.sendToLog("Create " + destination + " directory");
+                    Directory.CreateDirectory(destination);
+                }
+            }
+            catch (IOException makeNewDirectoryError)
+            {
+                // Error in creating directory
+                ParentForm.sendToLog("Creating directory failed: " + makeNewDirectoryError);
+            }
+
+            // Copy from source to destination (overwrite mode)
+            try
+            {
+                ParentForm.sendToLog("Copying " + source + " to " + destination);
+                File.Copy(source, fullDestination, true); // true mean overwrite exist file
+                ParentForm.sendToLog("Copy " + source + " successfull");
+            }
+            catch (IOException copyError)
+            {
+                // Error in copy process
+                ParentForm.sendToLog("Copy " + source + " failed: " + copyError);
+            }
+
         }
     }
 }

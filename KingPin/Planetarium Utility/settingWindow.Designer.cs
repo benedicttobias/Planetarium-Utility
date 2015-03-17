@@ -175,6 +175,7 @@
             this.defFileTypes.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(this.defFileTypes, "defFileTypes");
             this.defFileTypes.Name = "defFileTypes";
+            this.defFileTypes.Leave += new System.EventHandler(this.defFileTypes_Leave);
             // 
             // fileTypesLabel
             // 
@@ -190,6 +191,7 @@
             this.defDest.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(this.defDest, "defDest");
             this.defDest.Name = "defDest";
+            this.defDest.Leave += new System.EventHandler(this.defDest_Leave);
             // 
             // defSource
             // 

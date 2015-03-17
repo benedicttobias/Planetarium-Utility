@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -13,52 +14,86 @@ namespace Planetarium_Utility
 {
     public partial class settingWindow : Form
     {
-        /*********************************************************/
-        /*  Call function to other forms                         */
-        /*********************************************************/
-        // Return default file types called by main program
-        public String[] getDefFileTypes
-        {
-            get 
-            { 
-                String[] extensions;               
+        /*========================
+         *  CUSTOMIZED VARIABLES
+         *=======================*/
 
-                // Split string into array of string
-                extensions = defFileTypes.Text.Split(' ');
-
-                return extensions;
-            }
-        }
-
-        public string getDestination  { get { return defDest.Text;     } }
-        public string getDefSource    { get { return defSource.Text;   } }
-        public string getPassword     { get { return password.Text;    } }
-        public string getUsername     { get { return username.Text;    } }
-        public string getRendererName { get { return rendererName.Text;} }
-        public string getRendererNum  { get { return rendererNum.Text; } }
-        
-
-        // VARIABLES
+        // Path to document location
         string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-               // Path to document location
+        // File that contains setting value  
         string fileName = @"\PlanetariumUtilitySetting.txt";
-                // File that contains setting value
+        // Comment symbol to be written in text file  
         char comment = ';';
-                // Comment symbol to be written in text file
 
-        // SETUP SETTING WINDOW
+
+
+        /*========================
+        *  SETUP SETTING WINDOW
+        *=======================*/
         public settingWindow()
         {
             InitializeComponent();
             this.setDefaultValue();
         }
 
-        // CLOSE WINDOW AND REVERT TO PREVIOUS SETTING
-        private void cancelButton_Click(object sender, EventArgs e)
+
+
+        /*================
+        *  GET FUNCTIONS
+        *================*/
+        public string getRendererName { get { return rendererName.Text; } }
+        public string getRendererNum { get { return rendererNum.Text; } }
+        public string getUsername { get { return username.Text; } }
+        public string getPassword { get { return password.Text; } }
+        public string getDestination { get { return defDest.Text; } }
+        public string getDefSource { get { return defSource.Text; } }
+        public String[] getDefFileTypes
         {
-            this.setDefaultValue();
-            this.Hide();
+            get
+            {
+                // Split string into array of string
+                String[] extensions;
+                extensions = defFileTypes.Text.Split(' ');
+                return extensions;
+            }
         }
+
+
+
+        /*=============================
+         *  Event-Based Functions Def
+         *============================*/
+
+        private void settingWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        // DEFAULT DESTINATION VALIDATION
+        private void defDest_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            defDest.Text = defDest.Text.Trim();
+
+            // Make sure that the path is legitimate
+            if (validatePath(defDest.Text))
+                if (defDest.Text.Contains(":"))
+                    parseToNetworkPath();
+                else
+                {
+                    MessageBox.Show("Enter a valid path. Path must be a network path (begins with \"\\\""); // center this to parent by creating a custom messagebox class */
+                    defDest.Focus();
+                }
+        }
+
+
+        // DEFAULT FILE TYPES VALIDATION
+        private void defFileTypes_Leave(object sender, EventArgs e)
+        {
+
+        }
+
 
         // SAVE CHANGES AND CLOSE WINDOW
         private async void saveButton_Click(object sender, EventArgs e)
@@ -78,7 +113,7 @@ namespace Planetarium_Utility
             // Open streamwriter to a new text file named "PlanetariumUtilitySetting.txt"and write constructed string onto it.
             // "false" = Overwrite if exist
             /* !!! make text location a variable !!! */
-            using (StreamWriter saveSetting = new StreamWriter(myDocPath+fileName , false))
+            using (StreamWriter saveSetting = new StreamWriter(myDocPath + fileName, false))
             {
                 /* !!! try and catch to handle exception !!! */
 
@@ -90,24 +125,38 @@ namespace Planetarium_Utility
             this.Hide();
         }
 
+
+        // CLOSE WINDOW AND REVERT TO PREVIOUS SETTING
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.setDefaultValue();
+            this.Hide();
+        }
+
+
+
+        /*=============================
+         *  User Function Definitions
+         *============================*/
+
         // SET VALUES FROM SAVED TEXT FILE
         private void setDefaultValue()
         {
-            string[] lines = File.ReadAllLines(myDocPath+fileName);
+            string[] lines = File.ReadAllLines(myDocPath + fileName);
             string[] value = new string[7];
-                    /* Order of values:
-                     *  rendererName
-                     *  rendererNum
-                     *  username
-                     *  password
-                     *  defSource
-                     *  defDest
-                     *  defFileTypes
-                     */
+            /* Order of values:
+            *  rendererName
+            *  rendererNum
+            *  username
+            *  password
+            *  defSource
+            *  defDest
+            *  defFileTypes
+            */
 
             // Exclude comments from the list. Store only values in a new array.
             int v = 0;
-            for (int i=0; i<lines.Length; i++)
+            for (int i = 0; i < lines.Length; i++)
             {
                 if (!lines[i].Contains(comment))
                 {
@@ -127,10 +176,45 @@ namespace Planetarium_Utility
             defFileTypes.Text = value[6];
         }
 
-        //
-        private void settingWindow_Load(object sender, EventArgs e)
+
+        // CHANGE LOCAL ADDRESS TO NETWORK ADDRESS
+        private void parseToNetworkPath()
         {
-            
+            var sourceText = defDest.Text;
+            StringBuilder newText = new StringBuilder(sourceText);
+
+            // Find where the colon and the letter drive
+            int colon = sourceText.IndexOf(':');
+            int drive = colon - 1;
+
+            // Set letter drive to lower case and remove colon
+            newText = newText.Replace(sourceText[drive], sourceText[drive].ToString().ToLower().ToCharArray()[0]);
+            newText = newText.Remove(colon, 1);
+
+            // Update default destination with the modified string
+            defDest.Text = ("\\" + newText.ToString());
         }
+
+
+        // CHECK TO SEE IF STRING IS LEGIT PATH
+        private bool validatePath(string path)
+        {
+            string pathRegex = @"^((([a-zA-Z]:)|(\\{1,2}\w+)|(\\{1,2}(?:(?:25[0-5]|2[0-4]\d|[01]\d\d|\d?\d)(?(?=\.?\d)\.)){4}))(\\(\w[\w ]*)))";
+            /* Regex to match valid folder paths. can be local, UNC with server name, or UNC with IP address
+             * Matches: c:\ds\dsfsdf | \\192.168.14.118\23423 | \\fsdf\23423
+             * Non-Matches:	c:\ | \\192.168.12.114 | \\fff
+             */
+            Regex pathPattern = new Regex(pathRegex);
+            return (pathPattern.IsMatch(path));
+        }
+
+
+        // CHECK TO SEE IF STRING IS A SET OF FILE TYPES
+        private bool validateFileTypes(string fileTypes)
+        {
+            return true;
+        }
+
+
     }
 }
