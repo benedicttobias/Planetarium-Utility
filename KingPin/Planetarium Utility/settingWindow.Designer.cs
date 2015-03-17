@@ -48,7 +48,6 @@
             this.sourceLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.renderersBox.SuspendLayout();
             this.authBox.SuspendLayout();
             this.defaultsBox.SuspendLayout();
@@ -237,23 +236,12 @@
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.OliveDrab;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkOliveGreen;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // settingWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Black;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.defaultsBox);
@@ -298,7 +286,6 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.TextBox defFileTypes;
         private System.Windows.Forms.Label fileTypesLabel;
-        private System.Windows.Forms.Button button1;
 
 
 

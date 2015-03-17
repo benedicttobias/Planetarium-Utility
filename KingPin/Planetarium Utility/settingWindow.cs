@@ -78,8 +78,10 @@ namespace Planetarium_Utility
 
             // Make sure that the path is legitimate
             if (validatePath(defDest.Text))
+            {
                 if (defDest.Text.Contains(":"))
                     parseToNetworkPath();
+            }
             else
             {
                 MessageBox.Show("Enter a valid path. Path must be a network path (begins with \"\\\""); // center this to parent by creating a custom messagebox class */
@@ -91,7 +93,12 @@ namespace Planetarium_Utility
         // DEFAULT FILE TYPES VALIDATION
         private void defFileTypes_Leave(object sender, EventArgs e)
         {
-
+            // Make sure that text is comma separated file formats
+            if (!validateFormats(defFileTypes.Text))
+            {
+                MessageBox.Show("File Types must be space-separated 3-letter file formats"); // center this to parent by creating a custom messagebox class */
+                defFileTypes.Focus();
+            }
         }
         
         
@@ -140,22 +147,59 @@ namespace Planetarium_Utility
          *============================*/
 
         // SET VALUES FROM SAVED TEXT FILE
-        private void setDefaultValue()
+        private async void setDefaultValue()
         {
-            string[] lines = File.ReadAllLines(myDocPath + fileName);
-            string[] value = new string[7];
-                /* Order of values:
-                *  rendererName
-                *  rendererNum
-                *  username
-                *  password
-                *  defSource
-                *  defDest
-                *  defFileTypes
-                */
+            // Attempt to read settings from saved text file
+            string[] lines = new string[0];
+            bool readOkay;
+            try
+            {
+                lines = File.ReadAllLines(myDocPath + fileName);
+                readOkay = true;
+            }
+            catch (FileNotFoundException)
+            {
+                readOkay = false;
+            }
+
+            // If file doesn't exist, create a new one with default values
+            if (!readOkay)
+            {
+                // Construct the text to be written on file
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(comment + "Setting for Planetarium Utility");
+                sb.AppendLine(comment + "===============================");
+                sb.AppendLine("DS");
+                sb.AppendLine("8");
+                sb.AppendLine("skyvision");
+                sb.AppendLine("sky");
+                sb.AppendLine("\\\\ds-sound\\e\\svr\\output");
+                sb.AppendLine("\\\\e\\digital sky\\shows\\ps");
+                sb.AppendLine(".dsi .mpg");
+
+                // Open streamwriter to a new text file named "PlanetariumUtilitySetting.txt"and write constructed string onto it.
+                // "false" = Overwrite if exist
+                /* !!! make text location a variable !!! */
+                using (StreamWriter saveSetting = new StreamWriter(myDocPath + fileName, false))
+                {
+                    /* !!! try and catch to handle exception !!! */
+
+                    // Write to file when it can
+                    await saveSetting.WriteAsync(sb.ToString());
+                }
+
+                // Read the lines now that the file is created
+                lines = File.ReadAllLines(myDocPath + fileName);
+            }
 
             // Exclude comments from the list. Store only values in a new array.
             int v = 0;
+            string[] value = new string[7];
+                /* Order of values:
+                *  rendererName, rendererNum
+                *  username, password
+                *  defSource, defDest, defFileTypes
+                */
             for (int i = 0; i < lines.Length; i++)
             {
                 if (!lines[i].Contains(comment))
@@ -167,12 +211,12 @@ namespace Planetarium_Utility
 
             // Assign values to variables based on the order
             rendererName.Text = value[0];
-            rendererNum.Text = value[1];
-            username.Text = value[2];
-            password.Text = value[3];
-            defSource.Text = value[4];
-            defDest.Text = value[5];
-            defDest.Text = value[5];
+            rendererNum.Text  = value[1];
+            username.Text     = value[2];
+            password.Text     = value[3];
+            defSource.Text    = value[4];
+            defDest.Text      = value[5];
+            defDest.Text      = value[5];
             defFileTypes.Text = value[6];
         }
 
@@ -210,8 +254,10 @@ namespace Planetarium_Utility
  
 
         // CHECK TO SEE IF STRING IS A SET OF FILE TYPES
-        private bool validateFileTypes(string fileTypes)
+        private bool validateFormats(string fileTypes)
         {
+
+
             return true;
         }
 
