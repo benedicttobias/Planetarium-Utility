@@ -161,6 +161,7 @@
             // 
             this.fullDomeDist1.Location = new System.Drawing.Point(-4, 0);
             this.fullDomeDist1.Name = "fullDomeDist1";
+            this.fullDomeDist1.ParentForm = null;
             this.fullDomeDist1.Size = new System.Drawing.Size(489, 246);
             this.fullDomeDist1.TabIndex = 0;
             // 
