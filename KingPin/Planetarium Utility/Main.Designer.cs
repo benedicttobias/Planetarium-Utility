@@ -42,6 +42,7 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.FullDomeDist = new System.Windows.Forms.TabPage();
             this.fullDomeDist1 = new Planetarium_Utility.FullDomeDist();
+            this.statusButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
@@ -165,11 +166,22 @@
             this.fullDomeDist1.Size = new System.Drawing.Size(489, 246);
             this.fullDomeDist1.TabIndex = 0;
             // 
+            // statusButton
+            // 
+            this.statusButton.Location = new System.Drawing.Point(225, 0);
+            this.statusButton.Name = "statusButton";
+            this.statusButton.Size = new System.Drawing.Size(75, 23);
+            this.statusButton.TabIndex = 32;
+            this.statusButton.Text = "Status";
+            this.statusButton.UseVisualStyleBackColor = true;
+            this.statusButton.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 320);
+            this.Controls.Add(this.statusButton);
             this.Controls.Add(this.logListView);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.statusStrip1);
@@ -205,6 +217,7 @@
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage FullDomeDist;
         private FullDomeDist fullDomeDist1;
+        private System.Windows.Forms.Button statusButton;
 
     }
 }

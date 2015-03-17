@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Security.Permissions;
@@ -18,14 +18,16 @@ namespace Planetarium_Utility
     {
         // Connecting to setting form (Options)
         public settingWindow settingWindow;
+        public statusForm statusForm;
 
         // Connecting Main form and Usercontrol (here)
         public Main ParentForm { get; set; }
 
         public FullDomeDist()
         {
-            // Initialize option user control
+            // Initialize other forms
             settingWindow = new settingWindow();
+            statusForm    = new statusForm();
 
             // Initialize Full Dome Distributor
             InitializeComponent();
@@ -276,21 +278,54 @@ namespace Planetarium_Utility
             if (filesListView.Items.Count == 0)
                 ParentForm.sendToLog("Nothing to copy");
 
+            // Show Status form
+            statusForm.Show();
+
             // Loop through each list
             foreach (ListViewItem item in filesListView.Items)
             {
                 // Copy checked file from source to destination
                 if (item.Checked == true)
                 {
-                    // subitems 3 = source
-                    // subitems 4 = destination
-                    // subitems 0 = file name
-                    copyFile(item.SubItems[3].Text, item.SubItems[4].Text, item.SubItems[0].Text);
+                    // Add job to status form
+                    ListViewItem jobStatus = new ListViewItem();
+                    jobStatus.Text = item.SubItems[0].Text;        // index for file name
+                    jobStatus.SubItems.Add(item.SubItems[2].Text); // index for computer name 
+
+                    // Insert job to status form
+                    //filesListView.Items.Add(query);
+                    statusForm.addJob(jobStatus);
+                    
+
+                    // Create new background worker object
+                    BackgroundWorker job = new BackgroundWorker();
+
+                    // Set job properties
+                    job.WorkerSupportsCancellation = true;
+                    job.WorkerReportsProgress = true;
+                    job.DoWork += new DoWorkEventHandler(job_DoWork);
+
+                    // Assign the job to background worker
+                    job.RunWorkerAsync(item);
                 }
             }
 
         }
 
+        private void job_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // Retreive passed arguments
+            ListViewItem item = (ListViewItem) e.Argument;
+
+            // Copy file from source to destination according to channel name
+            copyFile(item.SubItems[3].Text,  // subitems 3 = source
+                     item.SubItems[4].Text,  // subitems 4 = destination
+                     item.SubItems[0].Text); // subitems 0 = file name
+        }
+
+
+
+        //private void copyFile(string source, string destination, string fileName)
         private void copyFile(string source, string destination, string fileName)
         {
             // Exact file destination
@@ -315,9 +350,7 @@ namespace Planetarium_Utility
 
             // Copy from source to destination (overwrite mode)
             try
-            {
-                // Logon to remote computer
-                
+            {               
 
                 ParentForm.sendToLog("Copying " + source + " to " + destination);
                 File.Copy(source, fullDestination, true); // true mean overwrite exist file
@@ -330,5 +363,6 @@ namespace Planetarium_Utility
             }
 
         }
+
     }
 }

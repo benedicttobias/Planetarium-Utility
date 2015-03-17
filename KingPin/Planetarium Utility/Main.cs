@@ -12,6 +12,7 @@ using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Planetarium_Utility
 {
@@ -46,7 +47,7 @@ namespace Planetarium_Utility
         /******************************************************************/
         public settingWindow settingWindow;
         public FullDomeDist fullDomeDist;
-
+        public statusForm statusForm;
 
         /******************************************************************/
         /*       Main Function                                            */
@@ -58,8 +59,10 @@ namespace Planetarium_Utility
             initializeLogList();
             initializeProgramSize();
 
-            // Initialize option user control
+            // Initialize other forms
             settingWindow = new settingWindow();
+            statusForm = new statusForm();
+
             this.fullDomeDist1.ParentForm = this;
             
         }
@@ -215,11 +218,62 @@ namespace Planetarium_Utility
             ListViewItem newLog = new ListViewItem(log);
 
             // Add the log to the list view
-            logListView.Items.Add(newLog);
-                
-            // Update the status update
-            statusUpdateStatusLabel.Text = log;
+            Thread updateLog = new Thread(updateLogListView);
+            updateLog.Start(log);           
         }
+
+        private void updateLogListView(object obj)
+        {
+            string newLog = (string) obj; // Parsed log sentences
+
+            // Check if invoke required because different thread
+            // Most likely required because called from different threads
+            if (InvokeRequired)
+            {
+                // Create delegate (pointer to function) and process data
+                // In this case, update log list items
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // Insert log to LogListView
+                    logListView.Items.Add(newLog);
+
+                    // Update the status update
+                    statusUpdateStatusLabel.Text = newLog;
+                }));
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Show the status form or create one if its not exist
+            if (statusForm == null || statusForm.IsDisposed == true)
+                statusForm = new statusForm();
+
+            statusForm.Show();
+        }
+
+
+        //delegate void SetControlValueCallback(Control oControl, string propName, object propValue);
+        //private void SetControlPropertyValue(Control oControl, string propName, object propValue)
+        //{
+        //    if (oControl.InvokeRequired)
+        //    {
+        //        SetControlValueCallback d = new SetControlValueCallback(SetControlPropertyValue);
+        //        oControl.Invoke(d, new object[] { oControl, propName, propValue });
+        //    }
+        //    else
+        //    {
+        //        Type t = oControl.GetType();
+        //        PropertyInfo[] props = t.GetProperties();
+        //        foreach (PropertyInfo p in props)
+        //        {
+        //            if (p.Name.ToUpper() == propName.ToUpper())
+        //            {
+        //                p.SetValue(oControl, propValue, null);
+        //            }
+        //        }
+        //    }
+        //}
 
     }
 }
