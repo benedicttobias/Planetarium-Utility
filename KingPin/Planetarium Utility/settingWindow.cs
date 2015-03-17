@@ -35,7 +35,7 @@ namespace Planetarium_Utility
             this.setDefaultValue();
         }
 
-
+     
 
         /*================
         *  GET FUNCTIONS
@@ -68,20 +68,6 @@ namespace Planetarium_Utility
             
         }
 
-        // DEFAULT SOURCE VALIDATION
-        private void defSource_Leave(object sender, EventArgs e)
-        {
-            // Remove leading or trailing spaces
-            defSource.Text = defSource.Text.Trim();
-
-            // Make sure that the path is legitimate
-            if (!validateNetworkPath(defSource.Text))
-            {
-                MessageBox.Show("Check default Source again. Always use network address (Ex: \\\\computer-name\\drive\\folder\\subfolder)."); // center this to parent by creating a custom messagebox class */
-                defSource.Focus();
-            }
-        }
-
 
         // COMPUTER NAME VALIDATION
         private void rendererName_Leave(object sender, EventArgs e)
@@ -94,6 +80,28 @@ namespace Planetarium_Utility
             {
                 MessageBox.Show("Renderer name must consists of characters and be less than 16 characters. Dot is allowed, but cannot start with one."); // center this to parent by creating a custom messagebox class */
                 rendererName.Focus();
+            }
+        }
+
+
+        // RENDERER NUMBER VALIDATION
+        private void rendererNum_Leave(object sender, EventArgs e)
+        {
+            // Does not need validation. Style changed to DropDownList which disabled text input
+        }
+
+        
+        // DEFAULT SOURCE VALIDATION
+        private void defSource_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            defSource.Text = defSource.Text.Trim();
+
+            // Make sure that the path is legitimate
+            if (!validateNetworkPath(defSource.Text))
+            {
+                MessageBox.Show("Check default Source again. Always use network address (Ex: \\\\computer-name\\drive\\folder\\subfolder)."); // center this to parent by creating a custom messagebox class */
+                defSource.Focus();
             }
         }
 
@@ -300,6 +308,8 @@ namespace Planetarium_Utility
 
             return true;
         }
+
+
 
 
     }

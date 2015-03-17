@@ -84,6 +84,8 @@
             resources.GetString("rendererNum.Items8"),
             resources.GetString("rendererNum.Items9")});
             this.rendererNum.Name = "rendererNum";
+            this.rendererNum.Leave += new System.EventHandler(this.rendererNum_Leave);
+            this.rendererNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // rendererName
             // 
