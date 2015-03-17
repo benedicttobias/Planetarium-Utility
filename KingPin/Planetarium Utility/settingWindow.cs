@@ -17,8 +17,7 @@ namespace Planetarium_Utility
         /*========================
          *  CUSTOMIZED VARIABLES
          *=======================*/
-
-        // Path to document location
+        // Path to saved text
         string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         // File that contains setting value  
         string fileName = @"\PlanetariumUtilitySetting.txt";
@@ -69,6 +68,20 @@ namespace Planetarium_Utility
             
         }
 
+        // DEFAULT SOURCE VALIDATION
+        private void defSource_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            defSource.Text = defSource.Text.Trim();
+
+            // Make sure that the path is legitimate
+            if (!validateNetworkPath(defSource.Text))
+            {
+                MessageBox.Show("Check default Source again. Always use network address (Ex: \\\\computer-name\\drive\\folder\\subfolder)."); // center this to parent by creating a custom messagebox class */
+                defSource.Focus();
+            }
+        }
+
 
         // DEFAULT DESTINATION VALIDATION
         private void defDest_Leave(object sender, EventArgs e)
@@ -77,14 +90,9 @@ namespace Planetarium_Utility
             defDest.Text = defDest.Text.Trim();
 
             // Make sure that the path is legitimate
-            if (validatePath(defDest.Text))
+            if (!validateLocalPath(defDest.Text))
             {
-                if (defDest.Text.Contains(":"))
-                    parseToNetworkPath();
-            }
-            else
-            {
-                MessageBox.Show("Enter a valid path. Path must be a network path (begins with \"\\\""); // center this to parent by creating a custom messagebox class */
+                MessageBox.Show("Check default Destination. Destination path is where the file is going for all machines (Ex: \\localDrive\\folder\\subfolder)."); // center this to parent by creating a custom messagebox class */
                 defDest.Focus();
             }
         }
@@ -241,13 +249,20 @@ namespace Planetarium_Utility
 
 
         // CHECK TO SEE IF STRING IS LEGIT PATH
-        private bool validatePath(string path)
+        private bool validateLocalPath(string path)
         {
-            string pathRegex = @"^((([a-zA-Z]:)|(\\{1,2}\w+)|(\\{1,2}(?:(?:25[0-5]|2[0-4]\d|[01]\d\d|\d?\d)(?(?=\.?\d)\.)){4}))(\\(\w[\w ]*)))";
-            /* Regex to match valid folder paths. can be local, UNC with server name, or UNC with IP address
-             * Matches: c:\ds\dsfsdf | \\192.168.14.118\23423 | \\fsdf\23423
-             * Non-Matches:	c:\ | \\192.168.12.114 | \\fff
-             */
+            string pathRegex = @"^(\\[A-Za-z0-9-_ ]+){1,}(\\?)$";
+                // Regex to match valid folder paths
+            Regex pathPattern = new Regex(pathRegex);
+            return (pathPattern.IsMatch(path));
+        }
+
+
+         // CHECK TO SEE IF STRING IS LEGIT SHARED FOLDER PATH
+        private bool validateNetworkPath(string path)
+        {
+            string pathRegex = @"^(\\)(\\[A-Za-z0-9-_ ]+){2,}(\\?)$";
+                // Validates a network path on a shared location
             Regex pathPattern = new Regex(pathRegex);
             return (pathPattern.IsMatch(path));
         }

@@ -199,6 +199,7 @@
             this.defSource.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(this.defSource, "defSource");
             this.defSource.Name = "defSource";
+            this.defSource.Leave += new System.EventHandler(this.defSource_Leave);
             // 
             // destLabel
             // 
