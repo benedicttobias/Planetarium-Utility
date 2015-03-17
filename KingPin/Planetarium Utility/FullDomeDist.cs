@@ -6,6 +6,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Security.Principal;
+using System.Security.Permissions;
 using System.Windows.Forms;
 using System.IO;
 
@@ -24,7 +27,7 @@ namespace Planetarium_Utility
             // Initialize option user control
             settingWindow = new settingWindow();
 
-            // Initialization
+            // Initialize Full Dome Distributor
             InitializeComponent();
             initializeFilesListView();
             initializeDefaultValue();
@@ -279,12 +282,13 @@ namespace Planetarium_Utility
                 // Copy checked file from source to destination
                 if (item.Checked == true)
                 {
-                    // subitems 2 = source
+                    // subitems 3 = source
                     // subitems 4 = destination
                     // subitems 0 = file name
-                    copyFile(item.SubItems[2].Text, item.SubItems[4].Text, item.SubItems[0].Text);
+                    copyFile(item.SubItems[3].Text, item.SubItems[4].Text, item.SubItems[0].Text);
                 }
             }
+
         }
 
         private void copyFile(string source, string destination, string fileName)
@@ -312,6 +316,9 @@ namespace Planetarium_Utility
             // Copy from source to destination (overwrite mode)
             try
             {
+                // Logon to remote computer
+                
+
                 ParentForm.sendToLog("Copying " + source + " to " + destination);
                 File.Copy(source, fullDestination, true); // true mean overwrite exist file
                 ParentForm.sendToLog("Copy " + source + " successfull");
