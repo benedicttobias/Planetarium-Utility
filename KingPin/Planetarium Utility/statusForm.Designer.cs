@@ -38,23 +38,28 @@
             this.statusPanel.Controls.Add(this.statusListView);
             this.statusPanel.Location = new System.Drawing.Point(12, 13);
             this.statusPanel.Name = "statusPanel";
-            this.statusPanel.Size = new System.Drawing.Size(368, 333);
+            this.statusPanel.Size = new System.Drawing.Size(552, 333);
             this.statusPanel.TabIndex = 0;
             // 
             // statusListView
             // 
             this.statusListView.Location = new System.Drawing.Point(4, 4);
+            this.statusListView.MaximumSize = new System.Drawing.Size(545, 326);
+            this.statusListView.MinimumSize = new System.Drawing.Size(545, 326);
             this.statusListView.Name = "statusListView";
-            this.statusListView.Size = new System.Drawing.Size(361, 326);
+            this.statusListView.Size = new System.Drawing.Size(545, 326);
             this.statusListView.TabIndex = 0;
             this.statusListView.UseCompatibleStateImageBehavior = false;
+            this.statusListView.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.statusListView_ColumnWidthChanging);
             // 
             // statusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 356);
+            this.ClientSize = new System.Drawing.Size(576, 356);
             this.Controls.Add(this.statusPanel);
+            this.MaximumSize = new System.Drawing.Size(592, 394);
+            this.MinimumSize = new System.Drawing.Size(592, 394);
             this.Name = "statusForm";
             this.Text = "Batch Status";
             this.statusPanel.ResumeLayout(false);

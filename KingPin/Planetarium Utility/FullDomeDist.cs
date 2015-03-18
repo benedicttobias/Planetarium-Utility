@@ -11,6 +11,7 @@ using System.Security.Principal;
 using System.Security.Permissions;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
 
 namespace Planetarium_Utility
 {
@@ -278,6 +279,10 @@ namespace Planetarium_Utility
             if (filesListView.Items.Count == 0)
                 ParentForm.sendToLog("Nothing to copy");
 
+            // Show the status menu or create one if its not exist
+            if (statusForm == null || statusForm.IsDisposed == true)
+                statusForm = new statusForm();
+
             // Show Status form
             statusForm.Show();
 
@@ -287,16 +292,7 @@ namespace Planetarium_Utility
                 // Copy checked file from source to destination
                 if (item.Checked == true)
                 {
-                    // Add job to status form
-                    ListViewItem jobStatus = new ListViewItem();
-                    jobStatus.Text = item.SubItems[0].Text;        // index for file name
-                    jobStatus.SubItems.Add(item.SubItems[2].Text); // index for computer name 
-
-                    // Insert job to status form
-                    //filesListView.Items.Add(query);
-                    statusForm.addJob(jobStatus);
                     
-
                     // Create new background worker object
                     BackgroundWorker job = new BackgroundWorker();
 
@@ -304,12 +300,34 @@ namespace Planetarium_Utility
                     job.WorkerSupportsCancellation = true;
                     job.WorkerReportsProgress = true;
                     job.DoWork += new DoWorkEventHandler(job_DoWork);
-
+                    job.ProgressChanged += new ProgressChangedEventHandler(job_ProgressChanged);
+                    
                     // Assign the job to background worker
                     job.RunWorkerAsync(item);
+
+                    // dummy job progress
+                    job.ReportProgress(50);
+            
+                    // Add job to status form
+                    ListViewItem jobStatus = new ListViewItem();
+                    jobStatus.Text = item.SubItems[0].Text;        // index for file name
+                    jobStatus.SubItems.Add(item.SubItems[2].Text); // index for computer name
+                    //jobStatus.SubItems.Add(job.ReportProgress);
+
+                    // Insert job to status form
+                    statusForm.addJob(jobStatus);
                 }
             }
 
+        }
+
+        private void job_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            // Insert progress bar to each job in status list
+            //progressBar1.Minimum = 0;
+            //progressBar1.Maximum = 0;
+            //label1.Text = e.ProgressPercentage.ToString();
+            //progressBar1.Value = e.ProgressPercentage;
         }
 
         private void job_DoWork(object sender, DoWorkEventArgs e)
@@ -322,7 +340,6 @@ namespace Planetarium_Utility
                      item.SubItems[4].Text,  // subitems 4 = destination
                      item.SubItems[0].Text); // subitems 0 = file name
         }
-
 
 
         //private void copyFile(string source, string destination, string fileName)
@@ -351,10 +368,19 @@ namespace Planetarium_Utility
             // Copy from source to destination (overwrite mode)
             try
             {               
+                // Create new class of custom copier
+                CustomFileCopier customCopy = new CustomFileCopier(source, fullDestination, fileName);
+                customCopy.OnProgressChanged += customCopy_OnProgressChanged;
+                
 
+                // Copy process begin
                 ParentForm.sendToLog("Copying " + source + " to " + destination);
-                File.Copy(source, fullDestination, true); // true mean overwrite exist file
-                ParentForm.sendToLog("Copy " + source + " successfull");
+                customCopy.Copy();
+                
+
+              
+
+                ParentForm.sendToLog(fileName + " copied");
             }
             catch (IOException copyError)
             {
@@ -363,6 +389,40 @@ namespace Planetarium_Utility
             }
 
         }
+
+        void customCopy_OnProgressChanged(double Persentage, ref bool Cancel, string fileName)
+        {
+             //Get progress bar by file name
+             ProgressBar thisJobProgressBar = statusForm.findProgressBar(fileName);
+             // Update progress bar correspond to the file name
+             if (InvokeRequired)
+             {
+                 // Create delegate (pointer to function) and process data
+                 // In this case, update status of jobs
+                 this.Invoke(new MethodInvoker(delegate
+                 {
+                     thisJobProgressBar.Value = (int)Persentage;
+                 }));
+             }
+        }
+
+        //private void customCopy_OnProgressChanged(double Persentage, ref bool Cancel, string fileName)
+        //{
+        //    // Get progress bar by file name
+        //    ProgressBar thisJobProgressBar = statusForm.findProgressBar(fileName);
+        //    MessageBox.Show("Invoked");
+        //    // Update progress bar correspond to the file name
+        //    if (InvokeRequired)
+        //    {
+        //        // Create delegate (pointer to function) and process data
+        //        // In this case, update status of jobs
+        //        this.Invoke(new MethodInvoker(delegate
+        //        {
+        //            MessageBox.Show("Invoked");
+        //            thisJobProgressBar.Value = (int)Persentage;
+        //        }));
+        //    }
+        //}
 
     }
 }
