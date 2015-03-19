@@ -90,6 +90,21 @@ namespace Planetarium_Utility
             // Does not need validation. Style changed to DropDownList which disabled text input
         }
 
+
+        // USERNAME VALIDATION
+        private void username_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            username.Text = username.Text.Trim();
+
+            // Make sure username is compliance to windows standard
+            if (!validateUsername(username.Text))
+            {
+                MessageBox.Show("User name cannot contain \" / \\ [ ] : ; | = , + * ? < or >");
+                username.Focus();
+            }
+        }
+
         
         // DEFAULT SOURCE VALIDATION
         private void defSource_Leave(object sender, EventArgs e)
@@ -124,10 +139,13 @@ namespace Planetarium_Utility
         // DEFAULT FILE TYPES VALIDATION
         private void defFileTypes_Leave(object sender, EventArgs e)
         {
+            // Trim trailing and leading spaces
+            defFileTypes.Text = defFileTypes.Text.Trim();
+
             // Make sure that text is comma separated file formats
-            if (!validateFormats(defFileTypes.Text))
+            if (!validateFormats(defFileTypes.Text) && defFileTypes.Text != "")
             {
-                MessageBox.Show("File Types must be space-separated 3-letter file formats"); // center this to parent by creating a custom messagebox class */
+                MessageBox.Show("File Types must be space-separated 3/4-letter file formats"); // center this to parent by creating a custom messagebox class */
                 defFileTypes.Focus();
             }
         }
@@ -262,6 +280,16 @@ namespace Planetarium_Utility
         }
 
 
+        // CHECK TO SEE IF STRING IS A VALID USER NAME
+        private bool validateUsername(string name)
+        {
+            string nameRegex = @"^([a-zA-Z0-9 \\~\\`\\!\\@\\#\\$%\\^&\\(\\)\\-_\\{\\}'\\.]+)$";
+            // Validates username based on Windows requirement
+            Regex namePattern = new Regex(nameRegex);
+            return (namePattern.IsMatch(name));
+        }
+
+
         /*//// CHANGE LOCAL ADDRESS TO NETWORK ADDRESS
         private void parseToNetworkPath()
         {
@@ -304,13 +332,11 @@ namespace Planetarium_Utility
         // CHECK TO SEE IF STRING IS A SET OF FILE TYPES
         private bool validateFormats(string fileTypes)
         {
-
-
-            return true;
+            string formatRegex = @"^(\.[a-zA-Z0-9]{1,4})(((\ ){1}\.[a-zA-Z0-9]{1,4})*)$";
+            //^((\.[a-zA-Z0-9]{1,4}(\ )?)*)$
+            // File types must be comma-separated sets of a dot follwed by max four letter or num.
+            Regex formatPattern = new Regex(formatRegex);
+            return (formatPattern.IsMatch(fileTypes));
         }
-
-
-
-
     }
 }

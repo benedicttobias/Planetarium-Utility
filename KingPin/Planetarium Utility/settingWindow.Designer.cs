@@ -69,6 +69,7 @@
             // rendererNum
             // 
             this.rendererNum.BackColor = System.Drawing.Color.Black;
+            this.rendererNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.rendererNum, "rendererNum");
             this.rendererNum.ForeColor = System.Drawing.Color.LightGray;
             this.rendererNum.FormattingEnabled = true;
@@ -85,7 +86,6 @@
             resources.GetString("rendererNum.Items9")});
             this.rendererNum.Name = "rendererNum";
             this.rendererNum.Leave += new System.EventHandler(this.rendererNum_Leave);
-            this.rendererNum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // rendererName
             // 
@@ -139,6 +139,7 @@
             this.username.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(this.username, "username");
             this.username.Name = "username";
+            this.username.Leave += new System.EventHandler(this.username_Leave);
             // 
             // passwordLabel
             // 
