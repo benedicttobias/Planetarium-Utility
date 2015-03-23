@@ -50,8 +50,6 @@ namespace Planetarium_Utility
                 {
                     // Insert job to status list view
                     statusListView.Items.Add(progressBar);
-
-                    
                 }));
             }
         }
@@ -73,7 +71,7 @@ namespace Planetarium_Utility
 
                     // Construt a progress bar
                     Rectangle sizeR = default(Rectangle);
-                    ProgressBar jobProgressBar = new ProgressBar();
+                    CustomProgressBar jobProgressBar = new CustomProgressBar();
 
                     // Get size of progress bar
                     sizeR = statusListView.Items[statusListView.Items.Count - 1].Bounds;
@@ -90,6 +88,8 @@ namespace Planetarium_Utility
                     // Set progress bar properties
                     jobProgressBar.Minimum = 0;
                     jobProgressBar.Maximum = 100;
+                    jobProgressBar.DisplayStyle = ProgressBarDisplayText.CustomText;
+                    jobProgressBar.CustomText = " Initialising";
 
                     // Set name to progress bar as file name
                     jobProgressBar.Name = string.Format(item.SubItems[0].Text + "ProgressBar");
@@ -120,20 +120,11 @@ namespace Planetarium_Utility
             // Set to the original width
             e.NewWidth = statusListView.Columns[e.ColumnIndex].Width;
         }
-            
-        public ProgressBar findProgressBar(string fileName)
+
+        public CustomProgressBar findProgressBar(string fileName)
         {
-            //foreach (Control c in this.Controls)
-            //{
-                
-            //    //if (c.Name == string.Format(fileName + "ProgressBar"))
-            //    //    return c; //found
-            //}
-
-
-            return (ProgressBar)this.Controls.Find(string.Format(fileName + "ProgressBar"), true).FirstOrDefault();
+            return (CustomProgressBar)this.Controls.Find(string.Format(fileName + "ProgressBar"), true).First();
         }
-        
         
     }
 }

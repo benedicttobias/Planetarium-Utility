@@ -290,7 +290,7 @@ namespace Planetarium_Utility
             foreach (ListViewItem item in filesListView.Items)
             {
                 // Copy checked file from source to destination
-                if (item.Checked == true)
+                if (item.Checked == true && (item.SubItems[2].Text != "Unknown"))
                 {
                     
                     // Create new background worker object
@@ -312,7 +312,6 @@ namespace Planetarium_Utility
                     ListViewItem jobStatus = new ListViewItem();
                     jobStatus.Text = item.SubItems[0].Text;        // index for file name
                     jobStatus.SubItems.Add(item.SubItems[2].Text); // index for computer name
-                    //jobStatus.SubItems.Add(job.ReportProgress);
 
                     // Insert job to status form
                     statusForm.addJob(jobStatus);
@@ -371,15 +370,13 @@ namespace Planetarium_Utility
                 // Create new class of custom copier
                 CustomFileCopier customCopy = new CustomFileCopier(source, fullDestination, fileName);
                 customCopy.OnProgressChanged += customCopy_OnProgressChanged;
+                customCopy.OnComplete        += customCopy_OnComplete;
                 
 
                 // Copy process begin
                 ParentForm.sendToLog("Copying " + source + " to " + destination);
                 customCopy.Copy();
                 
-
-              
-
                 ParentForm.sendToLog(fileName + " copied");
             }
             catch (IOException copyError)
@@ -390,39 +387,53 @@ namespace Planetarium_Utility
 
         }
 
-        void customCopy_OnProgressChanged(double Persentage, ref bool Cancel, string fileName)
+        private void customCopy_OnComplete(string fileName, string message)
         {
-             //Get progress bar by file name
-             ProgressBar thisJobProgressBar = statusForm.findProgressBar(fileName);
-             // Update progress bar correspond to the file name
-             if (InvokeRequired)
-             {
-                 // Create delegate (pointer to function) and process data
-                 // In this case, update status of jobs
-                 this.Invoke(new MethodInvoker(delegate
-                 {
-                     thisJobProgressBar.Value = (int)Persentage;
-                 }));
-             }
+            //Get progress bar by file name
+            CustomProgressBar thisJobProgressBar = statusForm.findProgressBar(fileName);
+
+            // Update progress bar correspond to the file name
+            if (InvokeRequired)
+            {
+                // Create delegate (pointer to function) and process data
+                // In this case, update status of jobs
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // Update progress bar
+                    thisJobProgressBar.ForeColor = Color.Blue;
+                    thisJobProgressBar.Invalidate();
+                    
+
+                    // Show file size
+                    thisJobProgressBar.CustomText = message;
+                }));
+            }
         }
 
-        //private void customCopy_OnProgressChanged(double Persentage, ref bool Cancel, string fileName)
-        //{
-        //    // Get progress bar by file name
-        //    ProgressBar thisJobProgressBar = statusForm.findProgressBar(fileName);
-        //    MessageBox.Show("Invoked");
-        //    // Update progress bar correspond to the file name
-        //    if (InvokeRequired)
-        //    {
-        //        // Create delegate (pointer to function) and process data
-        //        // In this case, update status of jobs
-        //        this.Invoke(new MethodInvoker(delegate
-        //        {
-        //            MessageBox.Show("Invoked");
-        //            thisJobProgressBar.Value = (int)Persentage;
-        //        }));
-        //    }
-        //}
+        void customCopy_OnProgressChanged(double percentage, ref bool Cancel,
+                                          string fileName, long fileLength, long totalBytes,
+                                          string fileSize, string secondsRemaining, string transferSpeed)
+        {
+            //Get progress bar by file name
+            CustomProgressBar thisJobProgressBar = statusForm.findProgressBar(fileName);
+
+            // Update progress bar correspond to the file name
+            if (InvokeRequired)
+            {
+                // Create delegate (pointer to function) and process data
+                // In this case, update status of jobs
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // Update progress bar
+                    thisJobProgressBar.Value = (int)percentage;
+
+                    // Show file size
+                    thisJobProgressBar.CustomText = fileSize + " | " + secondsRemaining + " | " + transferSpeed;
+                }));
+            }
+        }
+
+
 
     }
 }
