@@ -45,7 +45,6 @@ namespace Planetarium_Utility
         /******************************************************************/
         /*       Housekeeping section                                     */
         /******************************************************************/
-        public settingWindow settingWindow;
         public FullDomeDist fullDomeDist;
         public statusForm statusForm;
 
@@ -60,11 +59,9 @@ namespace Planetarium_Utility
             initializeProgramSize();
 
             // Initialize other forms
-            settingWindow = new settingWindow();
             statusForm = new statusForm();
 
             this.fullDomeDist1.ParentForm = this;
-            
         }
 
         // See note above about this feature
@@ -163,9 +160,7 @@ namespace Planetarium_Utility
 
         private void optionsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // Show the options menu or create one if its not exist
-            if (settingWindow == null || settingWindow.IsDisposed == true)
-                settingWindow = new settingWindow();
+            settingWindow settingWindow = new settingWindow();
 
             settingWindow.Show();
         }
@@ -251,29 +246,6 @@ namespace Planetarium_Utility
 
             statusForm.Show();
         }
-
-
-        //delegate void SetControlValueCallback(Control oControl, string propName, object propValue);
-        //private void SetControlPropertyValue(Control oControl, string propName, object propValue)
-        //{
-        //    if (oControl.InvokeRequired)
-        //    {
-        //        SetControlValueCallback d = new SetControlValueCallback(SetControlPropertyValue);
-        //        oControl.Invoke(d, new object[] { oControl, propName, propValue });
-        //    }
-        //    else
-        //    {
-        //        Type t = oControl.GetType();
-        //        PropertyInfo[] props = t.GetProperties();
-        //        foreach (PropertyInfo p in props)
-        //        {
-        //            if (p.Name.ToUpper() == propName.ToUpper())
-        //            {
-        //                p.SetValue(oControl, propValue, null);
-        //            }
-        //        }
-        //    }
-        //}
 
     }
 }

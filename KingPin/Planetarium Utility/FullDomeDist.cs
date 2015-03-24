@@ -18,7 +18,6 @@ namespace Planetarium_Utility
     public partial class FullDomeDist : UserControl
     {
         // Connecting to setting form (Options)
-        public settingWindow settingWindow;
         public statusForm statusForm;
 
         // Connecting Main form and Usercontrol (here)
@@ -27,7 +26,6 @@ namespace Planetarium_Utility
         public FullDomeDist()
         {
             // Initialize other forms
-            settingWindow = new settingWindow();
             statusForm    = new statusForm();
 
             // Initialize Full Dome Distributor
@@ -45,16 +43,15 @@ namespace Planetarium_Utility
                 sendToLog("Try to load project folder, but it could not reach the address.");
         }
 
-        private void initializeDefaultValue()
+        public void initializeDefaultValue()
         {
+            settingWindow settingWindow = new settingWindow();
+
             // Get the settings from Options
             projectTextBox.Text     = settingWindow.getDefSource;
             destinationTextBox.Text = settingWindow.getDestination;
-        }
 
-        private void distributeButton_Click(object sender, EventArgs e)
-        {
-        
+            settingWindow.Close();
         }
 
         private void projectButton_Click(object sender, EventArgs e)
@@ -168,7 +165,7 @@ namespace Planetarium_Utility
 
             // Set the destination corespond to the channel if destination known
             if (channel != "Unknown")
-                destination = string.Format("\\\\" + channel + "\\" + destinationTextBox.Text);
+                destination = string.Format("\\\\" + channel + destinationTextBox.Text);
 
             return destination;
         }
@@ -176,6 +173,7 @@ namespace Planetarium_Utility
         private void checkDefaultFileTypes()
         {
             int checkCounter = 0; // Count the number of files checked by default ext
+            settingWindow settingWindow = new settingWindow();
 
             // Get default file types from setting window
             foreach (String extension in settingWindow.getDefFileTypes)
@@ -203,6 +201,7 @@ namespace Planetarium_Utility
 
         private string findChannel(string fullName)
         {
+            settingWindow settingWindow = new settingWindow();
             string destination = "Unknown";                        // Initial file destination
             int    totalComputer;                                  // Number of renderer computers
             string computerPrefix = settingWindow.getRendererName; // Prefix of computer name
@@ -230,6 +229,8 @@ namespace Planetarium_Utility
                 ParentForm.sendToLog("Can't find destination for " + fullName);
             else
                 ParentForm.sendToLog("Destination found for " + fullName + " (" + destination + ")");
+
+            settingWindow.Close();
 
             return destination;
         }

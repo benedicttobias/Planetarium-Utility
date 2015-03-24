@@ -193,7 +193,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;renderersBox.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="rendererNum.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -256,7 +256,7 @@
     <value>78, 24</value>
   </data>
   <data name="rendererName.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>15</value>
   </data>
   <data name="rendererName.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 22</value>
@@ -345,81 +345,6 @@
   <data name="&gt;&gt;rendererNameLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;password.Name" xml:space="preserve">
-    <value>password</value>
-  </data>
-  <data name="&gt;&gt;password.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;password.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;password.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;username.Name" xml:space="preserve">
-    <value>username</value>
-  </data>
-  <data name="&gt;&gt;username.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;username.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;username.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.Name" xml:space="preserve">
-    <value>passwordLabel</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;passwordLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.Name" xml:space="preserve">
-    <value>usernameLabel</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.Parent" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;usernameLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="authBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>281, 13</value>
-  </data>
-  <data name="authBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="authBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 100</value>
-  </data>
-  <data name="authBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="authBox.Text" xml:space="preserve">
-    <value>Authorization</value>
-  </data>
-  <data name="&gt;&gt;authBox.Name" xml:space="preserve">
-    <value>authBox</value>
-  </data>
-  <data name="&gt;&gt;authBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;authBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;authBox.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="password.Location" type="System.Drawing.Point, System.Drawing">
     <value>85, 62</value>
   </data>
@@ -457,7 +382,7 @@
     <value>85, 24</value>
   </data>
   <data name="username.MaxLength" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>104</value>
   </data>
   <data name="username.Size" type="System.Drawing.Size, System.Drawing">
     <value>147, 22</value>
@@ -548,6 +473,132 @@
   </data>
   <data name="&gt;&gt;usernameLabel.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="authBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>281, 13</value>
+  </data>
+  <data name="authBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="authBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 100</value>
+  </data>
+  <data name="authBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="authBox.Text" xml:space="preserve">
+    <value>Authorization</value>
+  </data>
+  <data name="&gt;&gt;authBox.Name" xml:space="preserve">
+    <value>authBox</value>
+  </data>
+  <data name="&gt;&gt;authBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;authBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;authBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;defFileTypes.Name" xml:space="preserve">
+    <value>defFileTypes</value>
+  </data>
+  <data name="&gt;&gt;defFileTypes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;defFileTypes.Parent" xml:space="preserve">
+    <value>defaultsBox</value>
+  </data>
+  <data name="&gt;&gt;defFileTypes.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;fileTypesLabel.Name" xml:space="preserve">
+    <value>fileTypesLabel</value>
+  </data>
+  <data name="&gt;&gt;fileTypesLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fileTypesLabel.Parent" xml:space="preserve">
+    <value>defaultsBox</value>
+  </data>
+  <data name="&gt;&gt;fileTypesLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;defDest.Name" xml:space="preserve">
+    <value>defDest</value>
+  </data>
+  <data name="&gt;&gt;defDest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;defDest.Parent" xml:space="preserve">
+    <value>defaultsBox</value>
+  </data>
+  <data name="&gt;&gt;defDest.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;defSource.Name" xml:space="preserve">
+    <value>defSource</value>
+  </data>
+  <data name="&gt;&gt;defSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;defSource.Parent" xml:space="preserve">
+    <value>defaultsBox</value>
+  </data>
+  <data name="&gt;&gt;defSource.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;destLabel.Name" xml:space="preserve">
+    <value>destLabel</value>
+  </data>
+  <data name="&gt;&gt;destLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;destLabel.Parent" xml:space="preserve">
+    <value>defaultsBox</value>
+  </data>
+  <data name="&gt;&gt;destLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;sourceLabel.Name" xml:space="preserve">
+    <value>sourceLabel</value>
+  </data>
+  <data name="&gt;&gt;sourceLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sourceLabel.Parent" xml:space="preserve">
+    <value>defaultsBox</value>
+  </data>
+  <data name="&gt;&gt;sourceLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="defaultsBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 128</value>
+  </data>
+  <data name="defaultsBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="defaultsBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>518, 146</value>
+  </data>
+  <data name="defaultsBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="defaultsBox.Text" xml:space="preserve">
+    <value>Defaults</value>
+  </data>
+  <data name="&gt;&gt;defaultsBox.Name" xml:space="preserve">
+    <value>defaultsBox</value>
+  </data>
+  <data name="&gt;&gt;defaultsBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;defaultsBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;defaultsBox.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="defFileTypes.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 103</value>
@@ -738,33 +789,6 @@
   <data name="&gt;&gt;sourceLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="defaultsBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 128</value>
-  </data>
-  <data name="defaultsBox.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="defaultsBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>518, 146</value>
-  </data>
-  <data name="defaultsBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="defaultsBox.Text" xml:space="preserve">
-    <value>Defaults</value>
-  </data>
-  <data name="&gt;&gt;defaultsBox.Name" xml:space="preserve">
-    <value>defaultsBox</value>
-  </data>
-  <data name="&gt;&gt;defaultsBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;defaultsBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;defaultsBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="cancelButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -790,7 +814,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;cancelButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="saveButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -820,36 +844,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 296</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 30</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Sa&amp;ve</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

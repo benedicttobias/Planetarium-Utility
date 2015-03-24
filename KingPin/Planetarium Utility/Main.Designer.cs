@@ -42,10 +42,13 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.FullDomeDist = new System.Windows.Forms.TabPage();
             this.fullDomeDist1 = new Planetarium_Utility.FullDomeDist();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.fileDistributor1 = new Planetarium_Utility.FileDistributor();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.mainTabControl.SuspendLayout();
             this.FullDomeDist.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -140,6 +143,7 @@
             // mainTabControl
             // 
             this.mainTabControl.Controls.Add(this.FullDomeDist);
+            this.mainTabControl.Controls.Add(this.tabPage1);
             this.mainTabControl.Location = new System.Drawing.Point(0, 27);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
@@ -165,6 +169,24 @@
             this.fullDomeDist1.Size = new System.Drawing.Size(489, 246);
             this.fullDomeDist1.TabIndex = 0;
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.fileDistributor1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(489, 246);
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // fileDistributor1
+            // 
+            this.fileDistributor1.Location = new System.Drawing.Point(0, 0);
+            this.fileDistributor1.Name = "fileDistributor1";
+            this.fileDistributor1.Size = new System.Drawing.Size(489, 246);
+            this.fileDistributor1.TabIndex = 0;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +206,7 @@
             this.statusStrip1.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
             this.FullDomeDist.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,6 +228,8 @@
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage FullDomeDist;
         private FullDomeDist fullDomeDist1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private FileDistributor fileDistributor1;
 
     }
 }

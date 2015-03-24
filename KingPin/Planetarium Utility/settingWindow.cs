@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,8 +17,7 @@ namespace Planetarium_Utility
         /*========================
          *  CUSTOMIZED VARIABLES
          *=======================*/
-
-        // Path to document location
+        // Path to saved text
         string myDocPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         // File that contains setting value  
         string fileName = @"\PlanetariumUtilitySetting.txt";
@@ -70,6 +69,58 @@ namespace Planetarium_Utility
         }
 
 
+        // COMPUTER NAME VALIDATION
+        private void rendererName_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            rendererName.Text = rendererName.Text.Trim();
+
+            // Make sure that the path is legitimate
+            if (!validateCompName(rendererName.Text))
+            {
+                MessageBox.Show("Renderer name must consists of characters and be less than 16 characters. Dot is allowed, but cannot start with one."); // center this to parent by creating a custom messagebox class */
+                rendererName.Focus();
+            }
+        }
+
+
+        // RENDERER NUMBER VALIDATION
+        private void rendererNum_Leave(object sender, EventArgs e)
+        {
+            // Does not need validation. Style changed to DropDownList which disabled text input
+        }
+
+
+        // USERNAME VALIDATION
+        private void username_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            username.Text = username.Text.Trim();
+
+            // Make sure username is compliance to windows standard
+            if (!validateUsername(username.Text))
+            {
+                MessageBox.Show("User name cannot contain \" / \\ [ ] : ; | = , + * ? < or >");
+                username.Focus();
+            }
+        }
+
+
+        // DEFAULT SOURCE VALIDATION
+        private void defSource_Leave(object sender, EventArgs e)
+        {
+            // Remove leading or trailing spaces
+            defSource.Text = defSource.Text.Trim();
+
+            // Make sure that the path is legitimate
+            if (!validateNetworkPath(defSource.Text))
+            {
+                MessageBox.Show("Check default Source again. Always use network address (Ex: \\\\computer-name\\drive\\folder\\subfolder)."); // center this to parent by creating a custom messagebox class */
+                defSource.Focus();
+            }
+        }
+
+
         // DEFAULT DESTINATION VALIDATION
         private void defDest_Leave(object sender, EventArgs e)
         {
@@ -77,21 +128,26 @@ namespace Planetarium_Utility
             defDest.Text = defDest.Text.Trim();
 
             // Make sure that the path is legitimate
-            if (validatePath(defDest.Text))
-                if (defDest.Text.Contains(":"))
-                    parseToNetworkPath();
-                else
-                {
-                    MessageBox.Show("Enter a valid path. Path must be a network path (begins with \"\\\""); // center this to parent by creating a custom messagebox class */
-                    defDest.Focus();
-                }
+            if (!validateLocalPath(defDest.Text))
+            {
+                MessageBox.Show("Check default Destination. Destination path is where the file is going for all machines (Ex: \\localDrive\\folder\\subfolder)."); // center this to parent by creating a custom messagebox class */
+                defDest.Focus();
+            }
         }
 
 
         // DEFAULT FILE TYPES VALIDATION
         private void defFileTypes_Leave(object sender, EventArgs e)
         {
+            // Trim trailing and leading spaces
+            defFileTypes.Text = defFileTypes.Text.Trim();
 
+            // Make sure that text is comma separated file formats
+            if (!validateFormats(defFileTypes.Text) && defFileTypes.Text != "")
+            {
+                MessageBox.Show("File Types must be space-separated 3/4-letter file formats"); // center this to parent by creating a custom messagebox class */
+                defFileTypes.Focus();
+            }
         }
 
 
@@ -121,6 +177,8 @@ namespace Planetarium_Utility
                 await saveSetting.WriteAsync(sb.ToString());
             }
 
+            
+
             // Close window after saving
             this.Hide();
         }
@@ -140,22 +198,59 @@ namespace Planetarium_Utility
          *============================*/
 
         // SET VALUES FROM SAVED TEXT FILE
-        private void setDefaultValue()
+        private async void setDefaultValue()
         {
-            string[] lines = File.ReadAllLines(myDocPath + fileName);
-            string[] value = new string[7];
-            /* Order of values:
-            *  rendererName
-            *  rendererNum
-            *  username
-            *  password
-            *  defSource
-            *  defDest
-            *  defFileTypes
-            */
+            // Attempt to read settings from saved text file
+            string[] lines = new string[0];
+            bool readOkay;
+            try
+            {
+                lines = File.ReadAllLines(myDocPath + fileName);
+                readOkay = true;
+            }
+            catch (FileNotFoundException)
+            {
+                readOkay = false;
+            }
+
+            // If file doesn't exist, create a new one with default values
+            if (!readOkay)
+            {
+                // Construct the text to be written on file
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(comment + "Setting for Planetarium Utility");
+                sb.AppendLine(comment + "===============================");
+                sb.AppendLine("DS");
+                sb.AppendLine("8");
+                sb.AppendLine("skyvision");
+                sb.AppendLine("sky");
+                sb.AppendLine("\\\\ds-sound\\e\\svr\\output");
+                sb.AppendLine("\\\\e\\digital sky\\shows\\ps");
+                sb.AppendLine(".dsi .mpg");
+
+                // Open streamwriter to a new text file named "PlanetariumUtilitySetting.txt"and write constructed string onto it.
+                // "false" = Overwrite if exist
+                /* !!! make text location a variable !!! */
+                using (StreamWriter saveSetting = new StreamWriter(myDocPath + fileName, false))
+                {
+                    /* !!! try and catch to handle exception !!! */
+
+                    // Write to file when it can
+                    await saveSetting.WriteAsync(sb.ToString());
+                }
+
+                // Read the lines now that the file is created
+                lines = File.ReadAllLines(myDocPath + fileName);
+            }
 
             // Exclude comments from the list. Store only values in a new array.
             int v = 0;
+            string[] value = new string[7];
+            /* Order of values:
+            *  rendererName, rendererNum
+            *  username, password
+            *  defSource, defDest, defFileTypes
+            */
             for (int i = 0; i < lines.Length; i++)
             {
                 if (!lines[i].Contains(comment))
@@ -177,44 +272,53 @@ namespace Planetarium_Utility
         }
 
 
-        // CHANGE LOCAL ADDRESS TO NETWORK ADDRESS
-        private void parseToNetworkPath()
+        // COMPUTER NAME MUST MEET NETBIOS REQUIREMENT
+        private bool validateCompName(string name)
         {
-            var sourceText = defDest.Text;
-            StringBuilder newText = new StringBuilder(sourceText);
-
-            // Find where the colon and the letter drive
-            int colon = sourceText.IndexOf(':');
-            int drive = colon - 1;
-
-            // Set letter drive to lower case and remove colon
-            newText = newText.Replace(sourceText[drive], sourceText[drive].ToString().ToLower().ToCharArray()[0]);
-            newText = newText.Remove(colon, 1);
-
-            // Update default destination with the modified string
-            defDest.Text = ("\\" + newText.ToString());
+            string nameRegex = @"^[A-Za-z\d_!@#$%^()\-'{}~]([A-Za-z\d_!@#$%^()\-'{}\.~]{1,14}$)";
+            // Lookup NETBios computer name to understand regex
+            Regex namePattern = new Regex(nameRegex);
+            return (namePattern.IsMatch(name));
         }
 
 
-        // CHECK TO SEE IF STRING IS LEGIT PATH
-        private bool validatePath(string path)
+        // CHECK TO SEE IF STRING IS A VALID USER NAME
+        private bool validateUsername(string name)
         {
-            string pathRegex = @"^((([a-zA-Z]:)|(\\{1,2}\w+)|(\\{1,2}(?:(?:25[0-5]|2[0-4]\d|[01]\d\d|\d?\d)(?(?=\.?\d)\.)){4}))(\\(\w[\w ]*)))";
-            /* Regex to match valid folder paths. can be local, UNC with server name, or UNC with IP address
-             * Matches: c:\ds\dsfsdf | \\192.168.14.118\23423 | \\fsdf\23423
-             * Non-Matches:	c:\ | \\192.168.12.114 | \\fff
-             */
+            string nameRegex = @"^([a-zA-Z0-9 \\~\\`\\!\\@\\#\\$%\\^&\\(\\)\\-_\\{\\}'\\.]+)$";
+            // Validates username based on Windows requirement
+            Regex namePattern = new Regex(nameRegex);
+            return (namePattern.IsMatch(name));
+        }
+
+        // CHECK TO SEE IF STRING IS LEGIT PATH
+        private bool validateLocalPath(string path)
+        {
+            string pathRegex = @"^(\\[A-Za-z0-9-_ ]+){1,}(\\?)$";
+            // Regex to match valid folder paths
+            Regex pathPattern = new Regex(pathRegex);
+            return (pathPattern.IsMatch(path));
+        }
+
+
+        // CHECK TO SEE IF STRING IS LEGIT SHARED FOLDER PATH
+        private bool validateNetworkPath(string path)
+        {
+            string pathRegex = @"^(\\)(\\[A-Za-z0-9-_ ]+){2,}(\\?)$";
+            // Validates a network path on a shared location
             Regex pathPattern = new Regex(pathRegex);
             return (pathPattern.IsMatch(path));
         }
 
 
         // CHECK TO SEE IF STRING IS A SET OF FILE TYPES
-        private bool validateFileTypes(string fileTypes)
+        private bool validateFormats(string fileTypes)
         {
-            return true;
+            string formatRegex = @"^(\.[a-zA-Z0-9]{1,4})(((\ ){1}\.[a-zA-Z0-9]{1,4})*)$";
+            //^((\.[a-zA-Z0-9]{1,4}(\ )?)*)$
+            // File types must be comma-separated sets of a dot follwed by max four letter or num.
+            Regex formatPattern = new Regex(formatRegex);
+            return (formatPattern.IsMatch(fileTypes));
         }
-
-
     }
 }
