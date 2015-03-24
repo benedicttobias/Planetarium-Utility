@@ -15,7 +15,7 @@ namespace Planetarium_Utility
     public delegate void ProgressChangeDelegate(double Persentage, ref bool Cancel,
                                                 string fileName, long fileLength, long totalBytes,
                                                 string fileSize, string secondsRemaining, string transferSpeed);
-    public delegate void Completedelegate(string fileName, string message);
+    public delegate void Completedelegate(string fileName, string fileSize, string message);
 
     class CustomFileCopier
     {
@@ -81,6 +81,8 @@ namespace Planetarium_Utility
                         
                         // Calculate transfer speed
                         trasferSpeed = (-mbs).ToString() + " MB/s";
+                        if (trasferSpeed.Equals("-Infinity MB/s"))
+                            trasferSpeed = "0 MB/s";
 
                         cancelFlag = false;
                         OnProgressChanged(percentage, ref cancelFlag, fileName, fileLength,
@@ -95,9 +97,11 @@ namespace Planetarium_Utility
                         }
                     }
                 }
+
+                OnComplete(fileName, fileSize, "Completed");
             }
 
-            OnComplete(fileName, "Completed");
+            
         }
 
         private string roundFileLength(double size)
@@ -107,8 +111,10 @@ namespace Planetarium_Utility
             string stringSize = null;
             double roundedSize;
 
-            if (size <= KB)
+            if (size <= 1)
                 stringSize = size.ToString() + " Byte";
+            else if (size > 1 && size <= KB)
+                stringSize = size.ToString() + " Bytes";
             else if (size > KB && size <= MB)
             {
                 roundedSize = Math.Round(size / KB, 0);

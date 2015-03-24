@@ -315,7 +315,9 @@ namespace Planetarium_Utility
 
                     // Insert job to status form
                     statusForm.addJob(jobStatus);
+                    
                 }
+
             }
 
         }
@@ -387,7 +389,7 @@ namespace Planetarium_Utility
 
         }
 
-        private void customCopy_OnComplete(string fileName, string message)
+        private void customCopy_OnComplete(string fileName, string fileSize, string message)
         {
             //Get progress bar by file name
             CustomProgressBar thisJobProgressBar = statusForm.findProgressBar(fileName);
@@ -405,7 +407,7 @@ namespace Planetarium_Utility
                     
 
                     // Show file size
-                    thisJobProgressBar.CustomText = message;
+                    thisJobProgressBar.CustomText = fileSize + " | " + message;
                 }));
             }
         }

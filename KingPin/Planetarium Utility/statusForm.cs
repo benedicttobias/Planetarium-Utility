@@ -29,31 +29,6 @@ namespace Planetarium_Utility
             updateLog.Start(item);
         }
 
-        public void addProgressBar(ListViewItem item)
-        {
-            // Add the job to the list view
-            Thread updateLog = new Thread(updateProgressBar);
-            updateLog.Start(item);
-        }
-
-        private void updateProgressBar(object obj)
-        {
-            ListViewItem progressBar = (ListViewItem)obj; // Parsed log sentences
-
-            // Check if invoke required because different thread
-            // Most likely required because called from different threads
-            if (InvokeRequired)
-            {
-                // Create delegate (pointer to function) and process data
-                // In this case, add progress bar
-                this.Invoke(new MethodInvoker(delegate
-                {
-                    // Insert job to status list view
-                    statusListView.Items.Add(progressBar);
-                }));
-            }
-        }
-
         private void updateStatusListView(object obj)
         {
             ListViewItem item = (ListViewItem)obj; // Parsed log sentences
@@ -123,7 +98,10 @@ namespace Planetarium_Utility
 
         public CustomProgressBar findProgressBar(string fileName)
         {
-            return (CustomProgressBar)this.Controls.Find(string.Format(fileName + "ProgressBar"), true).First();
+            Application.DoEvents();
+            Thread.Sleep(1000);
+
+            return (CustomProgressBar)this.Controls.Find(string.Format(fileName + "ProgressBar"), true).FirstOrDefault();
         }
         
     }
