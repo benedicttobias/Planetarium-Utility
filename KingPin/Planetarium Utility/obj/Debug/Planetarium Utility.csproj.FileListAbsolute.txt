@@ -26,3 +26,4 @@ D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\D
 D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\en\Planetarium Utility.resources.dll
 D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.exe
 D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.pdb
+D:\Work and Project\GitHub\Planetarium-Utility\KingPin\Planetarium Utility\obj\Debug\Planetarium Utility.csprojResolveAssemblyReference.cache

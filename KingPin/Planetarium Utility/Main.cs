@@ -57,11 +57,22 @@ namespace Planetarium_Utility
             InitializeComponent();
             initializeLogList();
             initializeProgramSize();
+            initializeProgressBar();
 
             // Initialize other forms
             statusForm = new statusForm();
 
+            // Set tabPage's parent
             this.fullDomeDist1.ParentForm = this;
+            this.fileDistributor1.ParentForm = this;
+        }
+
+        public void initializeProgressBar()
+        {
+            copyProgressBar.Minimum = 0;
+            copyProgressBar.Maximum = 0;
+            copyProgressBar.Value = 0;
+            copyProgressBar.Step = 1;
         }
 
         // See note above about this feature
@@ -246,6 +257,37 @@ namespace Planetarium_Utility
 
             statusForm.Show();
         }
+
+        public void addCopyProgressMax()
+        {
+            // Update progress bar correspond to the file name
+            if (InvokeRequired)
+            {
+                // Create delegate (pointer to function) and process data
+                // In this case, add max value for progress bar
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // Add progress bar
+                    copyProgressBar.Maximum += 100;
+                }));
+            }
+
+        }
+        public void progressBarCompleted()
+        {
+            // Update progress bar correspond to the file name
+            if (InvokeRequired)
+            {
+                // Create delegate (pointer to function) and process data
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // Perform step of progress bar
+                    copyProgressBar.Value += 100;
+                }));
+            }
+            
+        }
+
 
     }
 }

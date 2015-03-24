@@ -31,15 +31,14 @@
             this.distributeButton = new System.Windows.Forms.Button();
             this.pathGroupBox = new System.Windows.Forms.GroupBox();
             this.destinationButton = new System.Windows.Forms.Button();
-            this.projectButton = new System.Windows.Forms.Button();
             this.destinationTextBox = new System.Windows.Forms.TextBox();
-            this.projectTextBox = new System.Windows.Forms.TextBox();
             this.destinationLabel = new System.Windows.Forms.Label();
-            this.projectLabel = new System.Windows.Forms.Label();
             this.filesGroupBox = new System.Windows.Forms.GroupBox();
-            this.filesListView = new System.Windows.Forms.ListView();
+            this.copyList = new System.Windows.Forms.ListView();
             this.resetButton = new System.Windows.Forms.Button();
             this.logButton = new System.Windows.Forms.Button();
+            this.mirrorCheckbox = new System.Windows.Forms.CheckBox();
+            this.checkBoxHolder = new System.Windows.Forms.TableLayoutPanel();
             this.pathGroupBox.SuspendLayout();
             this.filesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -52,92 +51,69 @@
             this.distributeButton.TabIndex = 38;
             this.distributeButton.Text = "Distribute";
             this.distributeButton.UseVisualStyleBackColor = true;
+            this.distributeButton.Click += new System.EventHandler(this.distributeButton_Click);
             // 
             // pathGroupBox
             // 
+            this.pathGroupBox.Controls.Add(this.checkBoxHolder);
+            this.pathGroupBox.Controls.Add(this.mirrorCheckbox);
             this.pathGroupBox.Controls.Add(this.destinationButton);
-            this.pathGroupBox.Controls.Add(this.projectButton);
             this.pathGroupBox.Controls.Add(this.destinationTextBox);
-            this.pathGroupBox.Controls.Add(this.projectTextBox);
             this.pathGroupBox.Controls.Add(this.destinationLabel);
-            this.pathGroupBox.Controls.Add(this.projectLabel);
-            this.pathGroupBox.Location = new System.Drawing.Point(4, 147);
+            this.pathGroupBox.Location = new System.Drawing.Point(4, 134);
             this.pathGroupBox.Name = "pathGroupBox";
-            this.pathGroupBox.Size = new System.Drawing.Size(482, 61);
+            this.pathGroupBox.Size = new System.Drawing.Size(482, 74);
             this.pathGroupBox.TabIndex = 36;
             this.pathGroupBox.TabStop = false;
             this.pathGroupBox.Text = "Path";
             // 
             // destinationButton
             // 
-            this.destinationButton.Location = new System.Drawing.Point(450, 33);
+            this.destinationButton.Location = new System.Drawing.Point(392, 43);
             this.destinationButton.Name = "destinationButton";
             this.destinationButton.Size = new System.Drawing.Size(26, 23);
             this.destinationButton.TabIndex = 5;
             this.destinationButton.Text = "...";
             this.destinationButton.UseVisualStyleBackColor = true;
-            // 
-            // projectButton
-            // 
-            this.projectButton.Location = new System.Drawing.Point(450, 10);
-            this.projectButton.Name = "projectButton";
-            this.projectButton.Size = new System.Drawing.Size(26, 23);
-            this.projectButton.TabIndex = 4;
-            this.projectButton.Text = "...";
-            this.projectButton.UseVisualStyleBackColor = true;
+            this.destinationButton.Click += new System.EventHandler(this.destinationButton_Click);
             // 
             // destinationTextBox
             // 
-            this.destinationTextBox.Location = new System.Drawing.Point(78, 35);
+            this.destinationTextBox.Enabled = false;
+            this.destinationTextBox.Location = new System.Drawing.Point(78, 46);
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.ReadOnly = true;
-            this.destinationTextBox.Size = new System.Drawing.Size(366, 20);
+            this.destinationTextBox.Size = new System.Drawing.Size(308, 20);
             this.destinationTextBox.TabIndex = 3;
-            // 
-            // projectTextBox
-            // 
-            this.projectTextBox.Location = new System.Drawing.Point(78, 13);
-            this.projectTextBox.Name = "projectTextBox";
-            this.projectTextBox.ReadOnly = true;
-            this.projectTextBox.Size = new System.Drawing.Size(366, 20);
-            this.projectTextBox.TabIndex = 2;
+            this.destinationTextBox.Text = "Mirror Mode";
             // 
             // destinationLabel
             // 
             this.destinationLabel.AutoSize = true;
-            this.destinationLabel.Location = new System.Drawing.Point(9, 38);
+            this.destinationLabel.Location = new System.Drawing.Point(12, 49);
             this.destinationLabel.Name = "destinationLabel";
             this.destinationLabel.Size = new System.Drawing.Size(60, 13);
             this.destinationLabel.TabIndex = 1;
             this.destinationLabel.Text = "Destination";
             // 
-            // projectLabel
-            // 
-            this.projectLabel.AutoSize = true;
-            this.projectLabel.Location = new System.Drawing.Point(9, 16);
-            this.projectLabel.Name = "projectLabel";
-            this.projectLabel.Size = new System.Drawing.Size(40, 13);
-            this.projectLabel.TabIndex = 0;
-            this.projectLabel.Text = "Project";
-            // 
             // filesGroupBox
             // 
-            this.filesGroupBox.Controls.Add(this.filesListView);
+            this.filesGroupBox.Controls.Add(this.copyList);
             this.filesGroupBox.Location = new System.Drawing.Point(4, 3);
             this.filesGroupBox.Name = "filesGroupBox";
-            this.filesGroupBox.Size = new System.Drawing.Size(482, 138);
+            this.filesGroupBox.Size = new System.Drawing.Size(482, 125);
             this.filesGroupBox.TabIndex = 37;
             this.filesGroupBox.TabStop = false;
-            this.filesGroupBox.Text = "Files";
+            this.filesGroupBox.Text = "Total: 0 file";
             // 
-            // filesListView
+            // copyList
             // 
-            this.filesListView.Location = new System.Drawing.Point(6, 19);
-            this.filesListView.Name = "filesListView";
-            this.filesListView.Size = new System.Drawing.Size(470, 113);
-            this.filesListView.TabIndex = 0;
-            this.filesListView.UseCompatibleStateImageBehavior = false;
-            this.filesListView.View = System.Windows.Forms.View.Details;
+            this.copyList.Location = new System.Drawing.Point(6, 19);
+            this.copyList.Name = "copyList";
+            this.copyList.Size = new System.Drawing.Size(470, 100);
+            this.copyList.TabIndex = 0;
+            this.copyList.UseCompatibleStateImageBehavior = false;
+            this.copyList.View = System.Windows.Forms.View.Details;
             // 
             // resetButton
             // 
@@ -147,6 +123,7 @@
             this.resetButton.TabIndex = 39;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // logButton
             // 
@@ -156,9 +133,35 @@
             this.logButton.TabIndex = 40;
             this.logButton.Text = "Log";
             this.logButton.UseVisualStyleBackColor = true;
+            this.logButton.Click += new System.EventHandler(this.logButton_Click);
+            // 
+            // mirrorCheckbox
+            // 
+            this.mirrorCheckbox.AutoSize = true;
+            this.mirrorCheckbox.Checked = true;
+            this.mirrorCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mirrorCheckbox.Location = new System.Drawing.Point(424, 49);
+            this.mirrorCheckbox.Name = "mirrorCheckbox";
+            this.mirrorCheckbox.Size = new System.Drawing.Size(52, 17);
+            this.mirrorCheckbox.TabIndex = 6;
+            this.mirrorCheckbox.Text = "Mirror";
+            this.mirrorCheckbox.UseVisualStyleBackColor = true;
+            this.mirrorCheckbox.CheckedChanged += new System.EventHandler(this.mirrorCheckbox_CheckedChanged);
+            // 
+            // checkBoxHolder
+            // 
+            this.checkBoxHolder.ColumnCount = 1;
+            this.checkBoxHolder.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.checkBoxHolder.Location = new System.Drawing.Point(15, 11);
+            this.checkBoxHolder.Name = "checkBoxHolder";
+            this.checkBoxHolder.RowCount = 1;
+            this.checkBoxHolder.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.checkBoxHolder.Size = new System.Drawing.Size(461, 29);
+            this.checkBoxHolder.TabIndex = 7;
             // 
             // FileDistributor
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.distributeButton);
@@ -168,7 +171,8 @@
             this.Controls.Add(this.logButton);
             this.Name = "FileDistributor";
             this.Size = new System.Drawing.Size(489, 246);
-            this.Load += new System.EventHandler(this.FileDistributor_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FileDistributor_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FileDistributor_DragEnter);
             this.pathGroupBox.ResumeLayout(false);
             this.pathGroupBox.PerformLayout();
             this.filesGroupBox.ResumeLayout(false);
@@ -181,15 +185,14 @@
         private System.Windows.Forms.Button distributeButton;
         private System.Windows.Forms.GroupBox pathGroupBox;
         private System.Windows.Forms.Button destinationButton;
-        private System.Windows.Forms.Button projectButton;
         private System.Windows.Forms.TextBox destinationTextBox;
-        private System.Windows.Forms.TextBox projectTextBox;
         private System.Windows.Forms.Label destinationLabel;
-        private System.Windows.Forms.Label projectLabel;
         private System.Windows.Forms.GroupBox filesGroupBox;
-        private System.Windows.Forms.ListView filesListView;
+        private System.Windows.Forms.ListView copyList;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button logButton;
+        private System.Windows.Forms.CheckBox mirrorCheckbox;
+        private System.Windows.Forms.TableLayoutPanel checkBoxHolder;
 
     }
 }

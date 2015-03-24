@@ -341,6 +341,8 @@ namespace Planetarium_Utility
             copyFile(item.SubItems[3].Text,  // subitems 3 = source
                      item.SubItems[4].Text,  // subitems 4 = destination
                      item.SubItems[0].Text); // subitems 0 = file name
+
+            
         }
 
 

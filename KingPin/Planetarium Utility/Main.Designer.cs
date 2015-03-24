@@ -35,20 +35,20 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.copyProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.statusUpdateStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.logListView = new System.Windows.Forms.ListView();
             this.mainTabControl = new System.Windows.Forms.TabControl();
+            this.FileDist = new System.Windows.Forms.TabPage();
             this.FullDomeDist = new System.Windows.Forms.TabPage();
-            this.fullDomeDist1 = new Planetarium_Utility.FullDomeDist();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.fileDistributor1 = new Planetarium_Utility.FileDistributor();
+            this.fullDomeDist1 = new Planetarium_Utility.FullDomeDist();
             this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
+            this.FileDist.SuspendLayout();
             this.FullDomeDist.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -58,7 +58,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(496, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(498, 24);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -105,22 +105,22 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyProgressBar,
             this.statusUpdateStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 298);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(496, 22);
-            this.statusStrip1.TabIndex = 18;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.Location = new System.Drawing.Point(0, 425);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(498, 22);
+            this.statusStrip.TabIndex = 18;
+            this.statusStrip.Text = "statusStrip1";
             // 
             // copyProgressBar
             // 
             this.copyProgressBar.Margin = new System.Windows.Forms.Padding(12, 3, 1, 3);
             this.copyProgressBar.Name = "copyProgressBar";
-            this.copyProgressBar.Size = new System.Drawing.Size(100, 16);
+            this.copyProgressBar.Size = new System.Drawing.Size(200, 16);
             // 
             // statusUpdateStatusLabel
             // 
@@ -142,13 +142,24 @@
             // 
             // mainTabControl
             // 
+            this.mainTabControl.Controls.Add(this.FileDist);
             this.mainTabControl.Controls.Add(this.FullDomeDist);
-            this.mainTabControl.Controls.Add(this.tabPage1);
             this.mainTabControl.Location = new System.Drawing.Point(0, 27);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(497, 272);
             this.mainTabControl.TabIndex = 19;
+            // 
+            // FileDist
+            // 
+            this.FileDist.Controls.Add(this.fileDistributor1);
+            this.FileDist.Location = new System.Drawing.Point(4, 22);
+            this.FileDist.Name = "FileDist";
+            this.FileDist.Padding = new System.Windows.Forms.Padding(3);
+            this.FileDist.Size = new System.Drawing.Size(489, 246);
+            this.FileDist.TabIndex = 1;
+            this.FileDist.Text = "File Distributor (Under Construction)";
+            this.FileDist.UseVisualStyleBackColor = true;
             // 
             // FullDomeDist
             // 
@@ -161,6 +172,15 @@
             this.FullDomeDist.Text = "Full Dome Distributor";
             this.FullDomeDist.UseVisualStyleBackColor = true;
             // 
+            // fileDistributor1
+            // 
+            this.fileDistributor1.AllowDrop = true;
+            this.fileDistributor1.Location = new System.Drawing.Point(0, 0);
+            this.fileDistributor1.Name = "fileDistributor1";
+            this.fileDistributor1.ParentForm = null;
+            this.fileDistributor1.Size = new System.Drawing.Size(489, 246);
+            this.fileDistributor1.TabIndex = 0;
+            // 
             // fullDomeDist1
             // 
             this.fullDomeDist1.Location = new System.Drawing.Point(-4, 0);
@@ -169,32 +189,14 @@
             this.fullDomeDist1.Size = new System.Drawing.Size(489, 246);
             this.fullDomeDist1.TabIndex = 0;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.fileDistributor1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(489, 246);
-            this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // fileDistributor1
-            // 
-            this.fileDistributor1.Location = new System.Drawing.Point(0, 0);
-            this.fileDistributor1.Name = "fileDistributor1";
-            this.fileDistributor1.Size = new System.Drawing.Size(489, 246);
-            this.fileDistributor1.TabIndex = 0;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 320);
+            this.ClientSize = new System.Drawing.Size(498, 447);
             this.Controls.Add(this.logListView);
             this.Controls.Add(this.mainTabControl);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -202,11 +204,11 @@
             this.Text = "Planetarium Utility";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
+            this.FileDist.ResumeLayout(false);
             this.FullDomeDist.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,14 +223,14 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripProgressBar copyProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel statusUpdateStatusLabel;
         private System.Windows.Forms.ListView logListView;
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage FullDomeDist;
         private FullDomeDist fullDomeDist1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage FileDist;
         private FileDistributor fileDistributor1;
 
     }
