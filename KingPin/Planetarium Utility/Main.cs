@@ -65,6 +65,7 @@ namespace Planetarium_Utility
             // Set tabPage's parent
             this.fullDomeDist1.ParentForm = this;
             this.fileDistributor1.ParentForm = this;
+            this.fileDeleter1.ParentForm = this;
         }
 
         public void initializeProgressBar()
@@ -267,8 +268,9 @@ namespace Planetarium_Utility
                 // In this case, add max value for progress bar
                 this.Invoke(new MethodInvoker(delegate
                 {
-                    // Add progress bar
+                    // Add progress bar value
                     copyProgressBar.Maximum += 100;
+
                 }));
             }
 
@@ -286,6 +288,35 @@ namespace Planetarium_Utility
                 }));
             }
             
+        }
+
+        public void deleterProgressBarMax(int max)
+        {
+            // Update progress bar correspond to the file name
+            if (InvokeRequired)
+            {
+                // Create delegate (pointer to function) and process data
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // Set max value of progress bar
+                    copyProgressBar.Minimum = 0;
+                    copyProgressBar.Maximum = max;
+                }));
+            }
+        }
+
+        public void deleterProgressBarStep(int value)
+        {
+            // Update progress bar correspond to the file name
+            if (InvokeRequired)
+            {
+                // Create delegate (pointer to function) and process data
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    // Set value of progress bar
+                    copyProgressBar.Value = value;
+                }));
+            }
         }
 
 

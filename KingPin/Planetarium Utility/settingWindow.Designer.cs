@@ -48,9 +48,19 @@
             this.sourceLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
+            this.BackupBox = new System.Windows.Forms.GroupBox();
+            this.backupButton = new System.Windows.Forms.Button();
+            this.backupTextbox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonsButton = new System.Windows.Forms.Button();
+            this.buttonsTextbox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.renderersBox.SuspendLayout();
             this.authBox.SuspendLayout();
             this.defaultsBox.SuspendLayout();
+            this.BackupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // renderersBox
@@ -240,12 +250,80 @@
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // BackupBox
+            // 
+            this.BackupBox.BackColor = System.Drawing.Color.Black;
+            this.BackupBox.Controls.Add(this.backupButton);
+            this.BackupBox.Controls.Add(this.backupTextbox);
+            this.BackupBox.Controls.Add(this.label3);
+            this.BackupBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackupBox.ForeColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.BackupBox, "BackupBox");
+            this.BackupBox.Name = "BackupBox";
+            this.BackupBox.TabStop = false;
+            // 
+            // backupButton
+            // 
+            resources.ApplyResources(this.backupButton, "backupButton");
+            this.backupButton.Name = "backupButton";
+            this.backupButton.UseVisualStyleBackColor = true;
+            // 
+            // backupTextbox
+            // 
+            this.backupTextbox.BackColor = System.Drawing.Color.Black;
+            this.backupTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backupTextbox.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.backupTextbox, "backupTextbox");
+            this.backupTextbox.Name = "backupTextbox";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.ForeColor = System.Drawing.Color.LightGray;
+            this.label3.Name = "label3";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Black;
+            this.groupBox1.Controls.Add(this.buttonsButton);
+            this.groupBox1.Controls.Add(this.buttonsTextbox);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.ForeColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // buttonsButton
+            // 
+            resources.ApplyResources(this.buttonsButton, "buttonsButton");
+            this.buttonsButton.Name = "buttonsButton";
+            this.buttonsButton.UseVisualStyleBackColor = true;
+            // 
+            // buttonsTextbox
+            // 
+            this.buttonsTextbox.BackColor = System.Drawing.Color.Black;
+            this.buttonsTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.buttonsTextbox.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.buttonsTextbox, "buttonsTextbox");
+            this.buttonsTextbox.Name = "buttonsTextbox";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.ForeColor = System.Drawing.Color.LightGray;
+            this.label1.Name = "label1";
+            // 
             // settingWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Black;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.BackupBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.defaultsBox);
@@ -265,6 +343,10 @@
             this.authBox.PerformLayout();
             this.defaultsBox.ResumeLayout(false);
             this.defaultsBox.PerformLayout();
+            this.BackupBox.ResumeLayout(false);
+            this.BackupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
          }
@@ -290,6 +372,14 @@
          private System.Windows.Forms.Button saveButton;
          private System.Windows.Forms.TextBox defFileTypes;
          private System.Windows.Forms.Label fileTypesLabel;
+         private System.Windows.Forms.GroupBox BackupBox;
+         private System.Windows.Forms.Button backupButton;
+         private System.Windows.Forms.TextBox backupTextbox;
+         private System.Windows.Forms.Label label3;
+         private System.Windows.Forms.GroupBox groupBox1;
+         private System.Windows.Forms.Button buttonsButton;
+         private System.Windows.Forms.TextBox buttonsTextbox;
+         private System.Windows.Forms.Label label1;
 
 
 

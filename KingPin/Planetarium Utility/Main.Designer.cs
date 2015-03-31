@@ -40,15 +40,18 @@
             this.statusUpdateStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.logListView = new System.Windows.Forms.ListView();
             this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.FileDist = new System.Windows.Forms.TabPage();
             this.FullDomeDist = new System.Windows.Forms.TabPage();
-            this.fileDistributor1 = new Planetarium_Utility.FileDistributor();
+            this.FileDist = new System.Windows.Forms.TabPage();
+            this.FileDeleter = new System.Windows.Forms.TabPage();
             this.fullDomeDist1 = new Planetarium_Utility.FullDomeDist();
+            this.fileDistributor1 = new Planetarium_Utility.FileDistributor();
+            this.fileDeleter1 = new Planetarium_Utility.fileDeleter();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.mainTabControl.SuspendLayout();
-            this.FileDist.SuspendLayout();
             this.FullDomeDist.SuspendLayout();
+            this.FileDist.SuspendLayout();
+            this.FileDeleter.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -142,24 +145,14 @@
             // 
             // mainTabControl
             // 
-            this.mainTabControl.Controls.Add(this.FileDist);
+            this.mainTabControl.Controls.Add(this.FileDeleter);
             this.mainTabControl.Controls.Add(this.FullDomeDist);
+            this.mainTabControl.Controls.Add(this.FileDist);
             this.mainTabControl.Location = new System.Drawing.Point(0, 27);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
             this.mainTabControl.Size = new System.Drawing.Size(497, 272);
             this.mainTabControl.TabIndex = 19;
-            // 
-            // FileDist
-            // 
-            this.FileDist.Controls.Add(this.fileDistributor1);
-            this.FileDist.Location = new System.Drawing.Point(4, 22);
-            this.FileDist.Name = "FileDist";
-            this.FileDist.Padding = new System.Windows.Forms.Padding(3);
-            this.FileDist.Size = new System.Drawing.Size(489, 246);
-            this.FileDist.TabIndex = 1;
-            this.FileDist.Text = "File Distributor (Under Construction)";
-            this.FileDist.UseVisualStyleBackColor = true;
             // 
             // FullDomeDist
             // 
@@ -172,6 +165,36 @@
             this.FullDomeDist.Text = "Full Dome Distributor";
             this.FullDomeDist.UseVisualStyleBackColor = true;
             // 
+            // FileDist
+            // 
+            this.FileDist.Controls.Add(this.fileDistributor1);
+            this.FileDist.Location = new System.Drawing.Point(4, 22);
+            this.FileDist.Name = "FileDist";
+            this.FileDist.Padding = new System.Windows.Forms.Padding(3);
+            this.FileDist.Size = new System.Drawing.Size(489, 246);
+            this.FileDist.TabIndex = 1;
+            this.FileDist.Text = "File Distributor (Under Construction)";
+            this.FileDist.UseVisualStyleBackColor = true;
+            // 
+            // FileDeleter
+            // 
+            this.FileDeleter.Controls.Add(this.fileDeleter1);
+            this.FileDeleter.Location = new System.Drawing.Point(4, 22);
+            this.FileDeleter.Name = "FileDeleter";
+            this.FileDeleter.Padding = new System.Windows.Forms.Padding(3);
+            this.FileDeleter.Size = new System.Drawing.Size(489, 246);
+            this.FileDeleter.TabIndex = 2;
+            this.FileDeleter.Text = "File Deleter";
+            this.FileDeleter.UseVisualStyleBackColor = true;
+            // 
+            // fullDomeDist1
+            // 
+            this.fullDomeDist1.Location = new System.Drawing.Point(-4, 0);
+            this.fullDomeDist1.Name = "fullDomeDist1";
+            this.fullDomeDist1.ParentForm = null;
+            this.fullDomeDist1.Size = new System.Drawing.Size(489, 246);
+            this.fullDomeDist1.TabIndex = 0;
+            // 
             // fileDistributor1
             // 
             this.fileDistributor1.AllowDrop = true;
@@ -181,13 +204,14 @@
             this.fileDistributor1.Size = new System.Drawing.Size(489, 246);
             this.fileDistributor1.TabIndex = 0;
             // 
-            // fullDomeDist1
+            // fileDeleter1
             // 
-            this.fullDomeDist1.Location = new System.Drawing.Point(-4, 0);
-            this.fullDomeDist1.Name = "fullDomeDist1";
-            this.fullDomeDist1.ParentForm = null;
-            this.fullDomeDist1.Size = new System.Drawing.Size(489, 246);
-            this.fullDomeDist1.TabIndex = 0;
+            this.fileDeleter1.AllowDrop = true;
+            this.fileDeleter1.Location = new System.Drawing.Point(0, 0);
+            this.fileDeleter1.Name = "fileDeleter1";
+            this.fileDeleter1.ParentForm = null;
+            this.fileDeleter1.Size = new System.Drawing.Size(489, 246);
+            this.fileDeleter1.TabIndex = 0;
             // 
             // Main
             // 
@@ -207,8 +231,9 @@
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.mainTabControl.ResumeLayout(false);
-            this.FileDist.ResumeLayout(false);
             this.FullDomeDist.ResumeLayout(false);
+            this.FileDist.ResumeLayout(false);
+            this.FileDeleter.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,6 +257,8 @@
         private FullDomeDist fullDomeDist1;
         private System.Windows.Forms.TabPage FileDist;
         private FileDistributor fileDistributor1;
+        private System.Windows.Forms.TabPage FileDeleter;
+        private fileDeleter fileDeleter1;
 
     }
 }

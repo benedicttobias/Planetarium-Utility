@@ -51,6 +51,12 @@
     <Compile Include="CustomProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="fileDeleter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="fileDeleter.Designer.cs">
+      <DependentUpon>fileDeleter.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileDistributor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fileDeleter.resx">
+      <DependentUpon>fileDeleter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FileDistributor.resx">
       <DependentUpon>FileDistributor.cs</DependentUpon>
     </EmbeddedResource>

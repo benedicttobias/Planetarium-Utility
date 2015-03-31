@@ -376,6 +376,7 @@ namespace Planetarium_Utility
                 CustomFileCopier customCopy = new CustomFileCopier(source, fullDestination, fileName);
                 customCopy.OnProgressChanged += customCopy_OnProgressChanged;
                 customCopy.OnComplete        += customCopy_OnComplete;
+                customCopy.DoWork += customCopy_DoWork;
                 
 
                 // Copy process begin
@@ -390,6 +391,11 @@ namespace Planetarium_Utility
                 ParentForm.sendToLog("Copy " + source + " failed: " + copyError);
             }
 
+        }
+
+        void customCopy_DoWork(string fileName)
+        {
+            
         }
 
         private void customCopy_OnComplete(string fileName, string fileSize, string message)

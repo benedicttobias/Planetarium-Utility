@@ -16,6 +16,7 @@ namespace Planetarium_Utility
                                                 string fileName, long fileLength, long totalBytes,
                                                 string fileSize, string secondsRemaining, string transferSpeed);
     public delegate void Completedelegate(string fileName, string fileSize, string message);
+    public delegate void DoWorkdelegate(string fileName);
 
     class CustomFileCopier
     {
@@ -61,6 +62,8 @@ namespace Planetarium_Utility
                     long totalBytes = 0;
                     int currentBlockSize = 0;
                     long fileCopied = dest.Length;
+
+                    DoWork(fileName);
 
                     while ((currentBlockSize = source.Read(buffer, 0, buffer.Length)) > 0)
                     {
@@ -147,6 +150,7 @@ namespace Planetarium_Utility
 
         public event ProgressChangeDelegate OnProgressChanged;
         public event Completedelegate OnComplete;
+        public event DoWorkdelegate DoWork;
     }
     
 }

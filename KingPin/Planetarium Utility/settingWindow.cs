@@ -57,6 +57,10 @@ namespace Planetarium_Utility
             }
         }
 
+        public string getBackupFolder { get { return backupTextbox.Text; } }
+        public string getButtonsFolder { get { return buttonsTextbox.Text; } }
+
+
 
 
         /*=============================
