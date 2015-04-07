@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pathGroupBox = new System.Windows.Forms.GroupBox();
             this.fileTextbox = new System.Windows.Forms.TextBox();
             this.destinationLabel = new System.Windows.Forms.Label();
@@ -35,8 +36,10 @@
             this.foundList = new System.Windows.Forms.ListView();
             this.resetButton = new System.Windows.Forms.Button();
             this.logButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.infoTextbox = new System.Windows.Forms.TextBox();
+            this.backupCheckbox = new System.Windows.Forms.CheckBox();
+            this.backupTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.pathGroupBox.SuspendLayout();
             this.filesGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -109,32 +112,46 @@
             this.logButton.UseVisualStyleBackColor = true;
             this.logButton.Click += new System.EventHandler(this.logButton_Click);
             // 
-            // button2
+            // deleteButton
             // 
-            this.button2.Location = new System.Drawing.Point(12, 210);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(321, 33);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "Delete (All)";
-            this.button2.UseVisualStyleBackColor = true;
+            this.deleteButton.Location = new System.Drawing.Point(12, 210);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(321, 33);
+            this.deleteButton.TabIndex = 47;
+            this.deleteButton.Text = "Delete (All)";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // textBox1
+            // infoTextbox
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(11, 183);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(468, 13);
-            this.textBox1.TabIndex = 48;
-            this.textBox1.Text = "monyong";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.infoTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.infoTextbox.Location = new System.Drawing.Point(11, 183);
+            this.infoTextbox.Name = "infoTextbox";
+            this.infoTextbox.Size = new System.Drawing.Size(326, 13);
+            this.infoTextbox.TabIndex = 48;
+            this.infoTextbox.Text = "monyong";
+            // 
+            // backupCheckbox
+            // 
+            this.backupCheckbox.AutoSize = true;
+            this.backupCheckbox.Checked = true;
+            this.backupCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.backupCheckbox.Location = new System.Drawing.Point(343, 179);
+            this.backupCheckbox.Name = "backupCheckbox";
+            this.backupCheckbox.Size = new System.Drawing.Size(137, 17);
+            this.backupCheckbox.TabIndex = 49;
+            this.backupCheckbox.Text = "Move to Backup Folder";
+            this.backupTooltip.SetToolTip(this.backupCheckbox, "Move original file to backup folder before deleting");
+            this.backupCheckbox.UseVisualStyleBackColor = true;
             // 
             // fileDeleter
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.backupCheckbox);
+            this.Controls.Add(this.infoTextbox);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.filesGroupBox);
             this.Controls.Add(this.pathGroupBox);
             this.Controls.Add(this.resetButton);
@@ -160,7 +177,9 @@
         private System.Windows.Forms.ListView foundList;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Button logButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.TextBox infoTextbox;
+        private System.Windows.Forms.CheckBox backupCheckbox;
+        private System.Windows.Forms.ToolTip backupTooltip;
     }
 }

@@ -377,7 +377,6 @@ namespace Planetarium_Utility
                 customCopy.OnProgressChanged += customCopy_OnProgressChanged;
                 customCopy.OnComplete        += customCopy_OnComplete;
                 customCopy.DoWork += customCopy_DoWork;
-                
 
                 // Copy process begin
                 ParentForm.sendToLog("Copying " + source + " to " + destination);

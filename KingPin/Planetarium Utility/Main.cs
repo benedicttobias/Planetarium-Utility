@@ -224,14 +224,14 @@ namespace Planetarium_Utility
             // Create a new instance of log
             ListViewItem newLog = new ListViewItem(log);
 
-            // Add the log to the list view
-            Thread updateLog = new Thread(updateLogListView);
-            updateLog.Start(log);           
+            BackgroundWorker updateLog = new BackgroundWorker();
+            updateLog.DoWork += updateLog_DoWork;
+            updateLog.RunWorkerAsync(log);
         }
 
-        private void updateLogListView(object obj)
+        void updateLog_DoWork(object sender, DoWorkEventArgs e)
         {
-            string newLog = (string) obj; // Parsed log sentences
+            string newLog = (string)e.Argument; // Parsed log sentences
 
             // Check if invoke required because different thread
             // Most likely required because called from different threads
@@ -245,18 +245,9 @@ namespace Planetarium_Utility
                     logListView.Items.Add(newLog);
 
                     // Update the status update
-                    statusUpdateStatusLabel.Text = newLog;
+                    statusLabel.Text = newLog;
                 }));
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Show the status form or create one if its not exist
-            if (statusForm == null || statusForm.IsDisposed == true)
-                statusForm = new statusForm();
-
-            statusForm.Show();
         }
 
         public void addCopyProgressMax()
@@ -270,7 +261,6 @@ namespace Planetarium_Utility
                 {
                     // Add progress bar value
                     copyProgressBar.Maximum += 100;
-
                 }));
             }
 
@@ -292,21 +282,37 @@ namespace Planetarium_Utility
 
         public void deleterProgressBarMax(int max)
         {
-            // Update progress bar correspond to the file name
-            if (InvokeRequired)
-            {
-                // Create delegate (pointer to function) and process data
-                this.Invoke(new MethodInvoker(delegate
-                {
-                    // Set max value of progress bar
-                    copyProgressBar.Minimum = 0;
-                    copyProgressBar.Maximum = max;
-                }));
-            }
+            copyProgressBar.Minimum = 0;
+            copyProgressBar.Maximum = max;
+        }
+
+
+        public void updateStatusLabel(string text)
+        {
+            statusLabel.Text = text;
+            statusLabel.Refresh();
         }
 
         public void deleterProgressBarStep(int value)
         {
+            copyProgressBar.Value = value;
+
+            if (value == copyProgressBar.Maximum)
+            {
+                copyProgressBar.Value = copyProgressBar.Minimum;
+            }
+        }
+
+        public void resetProgressBar()
+        {
+            copyProgressBar.Value = 0;
+        }
+
+        private void updateProgress(object obj)
+        {
+            // Parse object to integer
+            int progress = (int)obj; // Parsed update status
+
             // Update progress bar correspond to the file name
             if (InvokeRequired)
             {
@@ -314,10 +320,12 @@ namespace Planetarium_Utility
                 this.Invoke(new MethodInvoker(delegate
                 {
                     // Set value of progress bar
-                    copyProgressBar.Value = value;
+                    copyProgressBar.Value = progress;
                 }));
             }
         }
+
+
 
 
     }

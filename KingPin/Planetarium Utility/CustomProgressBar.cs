@@ -56,7 +56,6 @@ namespace Planetarium_Utility
             // Set the Display text (Either a % amount or our custom text
             string text = DisplayStyle == ProgressBarDisplayText.Percentage ? Value.ToString() + '%' : CustomText;
 
-
             using (Font f = new Font(FontFamily.GenericSerif, 10))
             {
 

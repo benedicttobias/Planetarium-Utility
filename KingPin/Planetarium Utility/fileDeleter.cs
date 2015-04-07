@@ -21,7 +21,8 @@ namespace Planetarium_Utility
         public fileDeleter()
         {
             InitializeComponent();
-            initializeFoundList();            
+            initializeFoundList();
+
         }
 
         private void initializeFoundList()
@@ -46,6 +47,7 @@ namespace Planetarium_Utility
             foundList.CheckBoxes = false;
             foundList.GridLines = true;
             foundList.Sorting = SortOrder.Ascending;
+
         }
 
         private void fileDeleter_DragEnter(object sender, DragEventArgs e)
@@ -61,51 +63,24 @@ namespace Planetarium_Utility
             // Loop to gather all the items
             foreach (string file in files)
             {
-                FileAttributes path = File.GetAttributes(file);
-
                 fileTextbox.Text = file;
+                fileTextbox.Refresh();
             }
-
-            BackgroundWorker search = new BackgroundWorker();
-            search.DoWork += search_DoWork;
-            search.WorkerSupportsCancellation = true;
-            search.RunWorkerAsync(e);
-
-        }
-
-        void search_DoWork(object sender, DoWorkEventArgs e)
-        {
-            DragEventArgs asep = (DragEventArgs) e.Argument;
 
             // Run search script
-            searchScript(sender, asep);
+            searchScript();
         }
 
-        private void searchScript(object sender, DragEventArgs e)
+        private void searchScript()
         {
-            
-            // Update progress bar correspond to the file name
-            if (InvokeRequired)
-            {
-                // Create delegate (pointer to function) and process data
-                this.Invoke(new MethodInvoker(delegate
-                {
-                    // Clear the table
-                    initializeFoundList();
+            // Clear the table
+            initializeFoundList();
 
-                    if (fileTextbox.Text == "")
-                    {
-                        ParentForm.sendToLog("Please select or drag/drop a file");
-                        return;
-                    }
+            // Gather scripts
+            lockScript();
 
-                    // Collect script
-                    lockScript(sender, e);
-
-                    // Find file in the scripts
-                    findTextInScripts();
-                }));
-            }
+            // Find file in the scripts
+            findTextInScripts();
         }
 
         private void findTextInScripts()
@@ -117,9 +92,13 @@ namespace Planetarium_Utility
             int lineNumber;                                   // Number of line in a file
             string lineString;                                   // Collection of line number
             string scriptName;                                   // Name of the script tab
-            //string captionName;                                // Name of the script caption
             List<string> captions = new List<string>();          // List of caption name 
             settingWindow settingWindow = new settingWindow();
+            int percentageProgress;
+            int scriptPerSecond = 0;
+            int previousScriptIndex = 0;
+            DateTime enterFunction = DateTime.Now;
+            int secondDifferent = 1; // 1 second different
 
             // Loop through all Buttons folder to find the keyword
             foreach (ListViewItem list in scriptList.Items)
@@ -129,6 +108,33 @@ namespace Planetarium_Utility
                 lineNumber = 0;
                 lineString = "";
                 scriptName = "";
+
+                infoTextbox.Text = list.Text;
+                infoTextbox.Refresh();
+
+                ParentForm.deleterProgressBarStep(scriptList.Items.IndexOf(list));
+
+                // Calculate script per second
+                DateTime now = DateTime.Now;
+                TimeSpan diff = now - enterFunction;
+                
+                if (((int) (Math.Round(diff.TotalSeconds))) == secondDifferent)
+                {
+                    scriptPerSecond = scriptList.Items.IndexOf(list) - previousScriptIndex;
+
+                    // Assign script index for next second
+                    previousScriptIndex = scriptList.Items.IndexOf(list);
+
+                    // add one second diff
+                    secondDifferent++;
+                }
+                
+                // Calculate progress info by percentage
+                percentageProgress = (scriptList.Items.IndexOf(list) * 100) / scriptList.Items.Count;
+
+                // Send info about searching
+                ParentForm.updateStatusLabel("Searching: " + percentageProgress.ToString() + "% | " 
+                                           + "Speed: " + scriptPerSecond.ToString() + " scripts/second");
 
                 // Open the file
                 StreamReader file = new StreamReader(list.Text);
@@ -190,6 +196,9 @@ namespace Planetarium_Utility
                     foundList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
             }
+
+            // Reset progress bar to 0
+            ParentForm.resetProgressBar();
 
             // Indicate the user for occurance
             if (foundList.Items.Count == 0)
@@ -270,7 +279,7 @@ namespace Planetarium_Utility
             return captions;
         }
 
-        private void lockScript(object sender, DragEventArgs e)
+        private void lockScript()
         {
             settingWindow settingWindow = new settingWindow();
 
@@ -288,6 +297,9 @@ namespace Planetarium_Utility
         {
             settingWindow settingWindow = new settingWindow();
 
+            // Clear the scripts list
+            scriptList.Items.Clear();
+            
             // Populate scripts in file
             try
             {
@@ -300,6 +312,9 @@ namespace Planetarium_Utility
                 }
 
                 ParentForm.sendToLog("Search complete using " + scriptList.Items.Count + " script(s)");
+
+                // Send maximum value to main progress bar
+                ParentForm.deleterProgressBarMax(scriptList.Items.Count);
             }
             catch (IOException error)
             {
@@ -311,6 +326,113 @@ namespace Planetarium_Utility
         {
             // Calling Main form to resize program
             ParentForm.expandAndCollapseLog();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            settingWindow settingWindow = new settingWindow();
+            string backupFolder;
+            string backupTarget;
+
+
+            // Backup original file if backup checkbox checked and perform delete
+            if (backupCheckbox.Checked == true)
+            {
+                // Setup backup location
+                backupFolder = settingWindow.getBackupFolder;
+                FileInfo fileName = new FileInfo(fileTextbox.Text);
+                backupTarget = backupFolder + "\\" + fileName.Name;
+
+                try
+                {
+                    ParentForm.sendToLog("Backup original file...");
+                    File.Copy(fileTextbox.Text, backupTarget);
+                    ParentForm.sendToLog("Backup done...");
+                }
+                catch (IOException error)
+                {
+                    ParentForm.sendToLog("Error to backup the file: " + error.Message);
+                    ParentForm.sendToLog("No file deleted");
+                    return;
+                }
+            }
+
+            // Delete on all computers including original file
+            deleteRenderer();
+            deleteMaster();
+        }
+
+        private void deleteMaster()
+        {
+            // Delete if there is a file
+            if (File.Exists(fileTextbox.Text))
+            {
+                try { System.IO.File.Delete(fileTextbox.Text); }
+                catch (IOException deleteError) { ParentForm.sendToLog("Delete error: " + deleteError.Message); }
+
+                // Insert log
+                ParentForm.sendToLog(fileTextbox.Text + " is deleted");
+            }
+            else
+            {
+                ParentForm.sendToLog("File is not valid in this computer");
+            }
+        }
+
+        private void deleteRenderer()
+        {
+            settingWindow settingWindow = new settingWindow();
+            int totalRenderer = Int32.Parse(settingWindow.getRendererNum);
+            string target = fileTextbox.Text.Replace(":", "");
+            string computerStringNumber;
+            string computerName;
+            string deleteFullPath = null;
+
+            // Delete if there is a file
+            if (File.Exists(fileTextbox.Text))
+            {
+                // Loop to delete based on renderer number
+                for (int computerNumber = 1; computerNumber <= totalRenderer; computerNumber++)
+                {
+                    // Replace Windows account name to renderer's name
+                    target = target.Replace(string.Format("\\Users\\" + System.Environment.UserName),
+                                            string.Format("\\Users\\" + settingWindow.getUsername));
+
+                    // Set the computer name for this iteration (01, 02, 03...)
+                    if (computerNumber < 10)
+                        computerStringNumber = string.Format("0" + computerNumber.ToString());
+                    else
+                        computerStringNumber = string.Format(computerNumber.ToString());
+
+                    // Construct renderer name                    
+                    computerName = string.Format(settingWindow.getRendererName + '-' + computerStringNumber);
+
+                    // Define delete path
+                    deleteFullPath = String.Format("\\\\" + computerName + "\\" + target);
+
+                    // Check file existency in the renderer
+                    if (System.IO.File.Exists(deleteFullPath))
+                    {
+                        // Deleting log
+                        ParentForm.sendToLog("Deleting " + deleteFullPath);
+
+                        // Actual delete action
+                        try { System.IO.File.Delete(deleteFullPath); }
+                        catch (IOException deleteError) { ParentForm.sendToLog("Delete error: " + deleteError.Message); }
+
+                        // Insert log
+                        ParentForm.sendToLog(deleteFullPath + " is deleted");
+                    }
+                    else
+                    {
+                        ParentForm.sendToLog(deleteFullPath + " does not exist");
+                    }
+                }
+            }
+            else
+            {
+                ParentForm.sendToLog("File is not exist in this computer");
+            }
         }
 
     }
